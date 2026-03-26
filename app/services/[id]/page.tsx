@@ -4,8 +4,43 @@
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
+import { ShoppingCart } from 'lucide-react';
 import RatingSystem from '@/components/RatingSystem';
 import Navbar from '../../../components/Navbar';
+import { useCartStore } from '@/lib/cart-store';
+
+// small helper button component for detail page
+function AddToCartButton({ service }: { service: any }) {
+  const { addItem } = useCartStore();
+  const [adding, setAdding] = useState(false);
+
+  const title = service.fields.Title || 'No Title';
+  const price = service.fields.Price || 0;
+  const images = service.fields.Works?.split('\n').filter((url: string) => url.trim()) || [];
+  const image = images[0] || '/placeholder-product.jpg';
+  const vendorName = service.fields.Name || 'Anonymous';
+
+  const handleClick = async () => {
+    setAdding(true);
+    addItem({ id: service.id, title, price, image, vendorName, quantity: 1 });
+    setAdding(false);
+  };
+
+  return (
+    <button
+      onClick={handleClick}
+      disabled={adding}
+      className="mt-4 w-full flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-600 to-pink-600 text-white font-semibold rounded-lg hover:shadow-xl transition-all duration-200 disabled:opacity-50"
+    >
+      {adding ? (
+        <span className="loader h-5 w-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
+      ) : (
+        <ShoppingCart className="w-5 h-5" />
+      )}
+      {adding ? 'Adding...' : 'Add to Cart'}
+    </button>
+  );
+}
 
 // Fix for Next.js 15 - params is now a Promise
 export default function ServiceDetailPage({ 
@@ -191,6 +226,11 @@ export default function ServiceDetailPage({
                     You save: ₦{savings.toLocaleString()}
                   </div>
                 )}
+
+                {/* Add to cart button */}
+                <AddToCartButton
+                  service={service}
+                />
               </div>
 
               <p className="text-gray-600 mb-6 leading-relaxed">

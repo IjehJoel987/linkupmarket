@@ -12,46 +12,105 @@ export default async function HomePage() {
       <Navbar />
 
       {/* Hero Section */}
-      <div className="bg-gradient-to-br from-purple-600 via-purple-700 to-pink-600 text-white py-24 relative overflow-hidden">
-        {/* Background Pattern */}
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-10 left-10 w-32 h-32 bg-white rounded-full"></div>
-          <div className="absolute top-20 right-20 w-24 h-24 bg-pink-300 rounded-full"></div>
-          <div className="absolute bottom-20 left-1/4 w-20 h-20 bg-purple-300 rounded-full"></div>
-          <div className="absolute bottom-10 right-10 w-16 h-16 bg-white rounded-full"></div>
+      <div className="relative overflow-hidden min-h-screen flex items-center justify-center bg-black">
+        {/* Animated Background Gradient */}
+        <div className="absolute inset-0 bg-gradient-to-br from-purple-600 via-indigo-600 to-pink-600"></div>
+        
+        {/* Animated Floating Orbs */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute -top-40 -left-40 w-96 h-96 bg-pink-500 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob"></div>
+          <div className="absolute -top-40 -right-40 w-96 h-96 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000"></div>
+          <div className="absolute -bottom-40 left-1/3 w-96 h-96 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-4000"></div>
+        </div>
+
+        {/* Sparkle Effects */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-20 right-10 w-3 h-3 bg-white rounded-full animate-pulse shadow-lg shadow-white/50"></div>
+          <div className="absolute top-40 left-20 w-2 h-2 bg-yellow-300 rounded-full animate-pulse shadow-lg shadow-yellow-300/50" style={{animationDelay: '0.5s'}}></div>
+          <div className="absolute bottom-32 right-1/4 w-3 h-3 bg-pink-300 rounded-full animate-pulse shadow-lg shadow-pink-300/50" style={{animationDelay: '1s'}}></div>
+          <div className="absolute top-1/2 left-10 w-2 h-2 bg-white rounded-full animate-pulse shadow-lg shadow-white/50" style={{animationDelay: '1.5s'}}></div>
+          <div className="absolute bottom-20 right-20 w-2 h-2 bg-yellow-300 rounded-full animate-pulse shadow-lg shadow-yellow-300/50" style={{animationDelay: '0.7s'}}></div>
+          <div className="absolute top-1/3 right-1/3 w-1.5 h-1.5 bg-pink-400 rounded-full animate-pulse shadow-lg shadow-pink-400/50" style={{animationDelay: '1.2s'}}></div>
         </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <div className="animate-fade-in-up">
-            <h1 className="text-6xl md:text-7xl font-extrabold mb-6 font-display leading-tight">
-              Your Campus
-              <span className="block gradient-text text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 to-pink-300">
-                Marketplace
+            <h1 className="text-6xl md:text-8xl font-extrabold mb-6 font-display leading-tight text-white drop-shadow-2xl">
+              Covenant University
+              <span className="block bg-gradient-to-r from-yellow-300 via-pink-300 to-red-400 text-transparent bg-clip-text animate-pulse">
+                Trade Fair 🎪
               </span>
             </h1>
-            <p className="text-xl md:text-2xl mb-8 opacity-90 max-w-3xl mx-auto leading-relaxed">
-              Discover, buy, and sell student services, products, and skills.
-              LinkUp Market — Covenant University Student Marketplace
-              LinkUp Market is the official student marketplace for Covenant University students.
-              <span className="block mt-2 font-semibold">No more group chat chaos!</span>
+            <p className="text-xl md:text-2xl mb-6 text-white max-w-3xl mx-auto leading-relaxed font-semibold drop-shadow-lg">
+              🎉 Pre-order your favorite products and we'll deliver them to your room!
             </p>
-            <p className="text-lg md:text-xl mb-8 opacity-80 max-w-4xl mx-auto leading-relaxed">
-              LinkUp Market is the official student marketplace for Covenant University students. LinkUp Market helps Covenant University students discover, buy from, and support student businesses on campus.
+            <p className="text-lg md:text-xl mb-8 text-yellow-100 max-w-4xl mx-auto leading-relaxed drop-shadow-md">
+              LinkUp Trade Fair brings together the best student entrepreneurs on campus.
+              <span className="block mt-2 font-bold text-yellow-300 text-2xl">Pre-Order Now • Pay ₦850 Delivery Fee • Get Door Delivery 🚚</span>
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <Link
-                href="/signup"
-                className="btn-primary px-10 py-5 text-xl font-bold rounded-2xl shadow-2xl hover:shadow-purple-500/25 transform hover:scale-110 transition-all duration-300"
+                href="#marketplace"
+                className="btn-primary px-12 py-6 text-2xl font-extrabold rounded-3xl shadow-2xl hover:shadow-pink-500/50 transform hover:scale-110 transition-all duration-300 backdrop-blur-sm bg-gradient-to-r from-pink-500 to-red-500 text-white border-2 border-yellow-300"
               >
-                🚀 Start Selling Today
+                🛒 Pre-Order with Delivery
               </Link>
 
               <Link
-                href="#marketplace"
-                className="btn-secondary px-8 py-4 text-lg font-semibold rounded-2xl"
+                href="/post-service"
+                className="px-10 py-5 text-xl font-bold rounded-3xl transition-all duration-300 bg-white text-purple-600 hover:shadow-2xl hover:scale-105 border-2 border-white shadow-xl"
               >
-                Browse Services
+                ✨ Sell Products
               </Link>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* How It Works Section */}
+      <div className="bg-white py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+              How LinkUp Delivery Works
+            </h2>
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+              We're your trusted bridge between amazing student products and convenient delivery to your room.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* Step 1 */}
+            <div className="text-center">
+              <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <span className="text-2xl">🛒</span>
+              </div>
+              <h3 className="text-xl font-semibold text-gray-800 mb-2">1. Pre-Order</h3>
+              <p className="text-gray-600">
+                Browse products, add to cart, and place your pre-order before stock runs out.
+              </p>
+            </div>
+
+            {/* Step 2 */}
+            <div className="text-center">
+              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <span className="text-2xl">💬</span>
+              </div>
+              <h3 className="text-xl font-semibold text-gray-800 mb-2">2. Pay & Confirm</h3>
+              <p className="text-gray-600">
+                Chat us on Telegram, pay ₦850 delivery fee + product cost. We verify payment instantly.
+              </p>
+            </div>
+
+            {/* Step 3 */}
+            <div className="text-center">
+              <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <span className="text-2xl">🚚</span>
+              </div>
+              <h3 className="text-xl font-semibold text-gray-800 mb-2">3. Door Delivery</h3>
+              <p className="text-gray-600">
+                We pick up from sellers and deliver directly to your room. Track your order status.
+              </p>
             </div>
           </div>
         </div>
@@ -59,6 +118,39 @@ export default async function HomePage() {
 
       {/* Pass services to client component */}
       <MarketplaceContent services={services} />
+
+      {/* Trust & Process Section (Footer Area) */}
+      <div className="bg-white py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+              Why Students Trust LinkUp
+            </h2>
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+              We’re a SEALD-verified student delivery service with transparent fees and door-to-room reliability.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="text-center p-6 bg-purple-50 rounded-2xl border border-purple-100">
+              <h4 className="text-xl font-semibold text-gray-800 mb-2">SEALD Verified</h4>
+              <p className="text-gray-600">Approved by campus app and student services authority.</p>
+            </div>
+            <div className="text-center p-6 bg-blue-50 rounded-2xl border border-blue-100">
+              <h4 className="text-xl font-semibold text-gray-800 mb-2">Door Delivery</h4>
+              <p className="text-gray-600">Guaranteed delivery from seller to student room for ₦850.</p>
+            </div>
+            <div className="text-center p-6 bg-green-50 rounded-2xl border border-green-100">
+              <h4 className="text-xl font-semibold text-gray-800 mb-2">Direct Telegram Support</h4>
+              <p className="text-gray-600">Instant order confirmation and updates via chat.</p>
+            </div>
+            <div className="text-center p-6 bg-yellow-50 rounded-2xl border border-yellow-100">
+              <h4 className="text-xl font-semibold text-gray-800 mb-2">Trusted Community</h4>
+              <p className="text-gray-600">Curated student vendors with fair prices and quality checks.</p>
+            </div>
+          </div>
+        </div>
+      </div>
 
       {/* Footer */}
       <footer className="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white py-16 mt-20 relative overflow-hidden">

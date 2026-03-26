@@ -3,10 +3,33 @@
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { LogOut } from 'lucide-react';
+import { LogOut, Search } from 'lucide-react';
+import dynamic from 'next/dynamic';
+import { useSearchStore } from '@/lib/search-store';
+
+// Dynamically import CartDropdown to avoid hydration issues
+const CartDropdown = dynamic(() => import('./CartDropdown'), {
+  ssr: false,
+  loading: () => <div className="w-6 h-6" /> // Placeholder while loading
+});
 
 export default function Navbar() {
   const [user, setUser] = useState<any>(null);
+  const query = useSearchStore((state) => state.query);
+  const setQuery = useSearchStore((state) => state.setQuery);
+
+  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    setQuery(value);
+    if (value) {
+      setTimeout(() => {
+        const element = document.getElementById('products-section');
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 200);
+    }
+  };
 
   useEffect(() => {
     const userData = localStorage.getItem('linkup_user');
@@ -57,7 +80,18 @@ export default function Navbar() {
             </Link>
           </div>
 
-          <div className="flex gap-3">
+          <div className="flex items-center gap-3">
+            <div className="relative hidden md:flex items-center">
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
+              <input
+                type="text"
+                value={query}
+                onChange={handleSearchChange}
+                placeholder="Search products"
+                className="pl-9 pr-3 py-2 border border-gray-200 rounded-full w-64 focus:outline-none focus:ring-2 focus:ring-purple-500"
+              />
+            </div>
+            <CartDropdown />
             {user ? (
               <div className="flex items-center gap-4">
                 <span className="text-gray-700 font-semibold">Welcome, {user.name}!</span>

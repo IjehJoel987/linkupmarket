@@ -1,19 +1,33 @@
 // components/MarketplaceContent.tsx
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { Search, Filter, X, Star, Users, Clock, Shield } from 'lucide-react';
 import ServiceCard from './ServiceCard';
+import { useSearchStore } from '@/lib/search-store';
 
 interface MarketplaceContentProps {
   services: any[];
 }
 
 export default function MarketplaceContent({ services }: MarketplaceContentProps) {
-  const [searchQuery, setSearchQuery] = useState('');
+  const searchQuery = useSearchStore((state) => state.query);
+  const setSearchQuery = useSearchStore((state) => state.setQuery);
   const [selectedCategory, setSelectedCategory] = useState('All Categories');
   const [priceRange, setPriceRange] = useState('Any Price');
   const [sortBy, setSortBy] = useState('Most Popular');
+
+  // Auto-scroll to products when search query changes
+  useEffect(() => {
+    if (searchQuery) {
+      setTimeout(() => {
+        const productsSection = document.getElementById('products-section');
+        if (productsSection) {
+          productsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 100);
+    }
+  }, [searchQuery]);
 
   // Get unique categories
   const categories = useMemo(() => {
@@ -88,14 +102,14 @@ export default function MarketplaceContent({ services }: MarketplaceContentProps
           <div className="p-3 bg-gradient-to-r from-purple-100 to-pink-100 rounded-2xl">
             <Search className="w-6 h-6 text-purple-600" />
           </div>
-          <h2 className="text-2xl font-bold text-gray-800 font-display">Find Your Perfect Service</h2>
+          <h2 className="text-2xl font-bold text-gray-800 font-display">Find Your Perfect Trade Fair Product</h2>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
           <div className="lg:col-span-2 relative">
             <input
               type="text"
-              placeholder="Search for photographers, cakes, tutors..."
+              placeholder="Search for fashion, food, tech, crafts..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="search-input pl-12"
@@ -151,67 +165,26 @@ export default function MarketplaceContent({ services }: MarketplaceContentProps
         </div>
       </div>
 
-      {/* Enhanced Stats */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
-        <div className="bg-white rounded-2xl shadow-lg p-6 text-center card-hover border border-gray-100">
-          <div className="flex justify-center mb-3">
-            <div className="p-3 bg-gradient-to-r from-purple-100 to-purple-200 rounded-2xl">
-              <Search className="w-6 h-6 text-purple-600" />
-            </div>
-          </div>
-          <div className="text-3xl font-bold gradient-text mb-1">{filteredServices.length}</div>
-          <div className="text-gray-600 font-medium">Results Found</div>
-        </div>
 
-        <div className="bg-white rounded-2xl shadow-lg p-6 text-center card-hover border border-gray-100">
-          <div className="flex justify-center mb-3">
-            <div className="p-3 bg-gradient-to-r from-pink-100 to-pink-200 rounded-2xl">
-              <Users className="w-6 h-6 text-pink-600" />
-            </div>
-          </div>
-          <div className="text-3xl font-bold gradient-text mb-1">{services.length}</div>
-          <div className="text-gray-600 font-medium">Total Services</div>
-        </div>
-
-        <div className="bg-white rounded-2xl shadow-lg p-6 text-center card-hover border border-gray-100">
-          <div className="flex justify-center mb-3">
-            <div className="p-3 bg-gradient-to-r from-green-100 to-green-200 rounded-2xl">
-              <Clock className="w-6 h-6 text-green-600" />
-            </div>
-          </div>
-          <div className="text-3xl font-bold gradient-text mb-1">24/7</div>
-          <div className="text-gray-600 font-medium">Always Available</div>
-        </div>
-
-        <div className="bg-white rounded-2xl shadow-lg p-6 text-center card-hover border border-gray-100">
-          <div className="flex justify-center mb-3">
-            <div className="p-3 bg-gradient-to-r from-blue-100 to-blue-200 rounded-2xl">
-              <Shield className="w-6 h-6 text-blue-600" />
-            </div>
-          </div>
-          <div className="text-3xl font-bold gradient-text mb-1">100%</div>
-          <div className="text-gray-600 font-medium">Student-Run</div>
-        </div>
-      </div>
 
       {/* Products Grid */}
-      <div className="mb-8">
+      <div id="products-section" className="mb-8">
         <h2 className="text-4xl font-bold mb-4 font-display text-gray-800">
           {searchQuery || selectedCategory !== 'All Categories' || priceRange !== 'Any Price'
             ? '🔍 Search Results'
-            : '✨ Browse All Services'}
+            : '🎪 Trade Fair Products'}
         </h2>
         <p className="text-gray-600 text-lg">
           {searchQuery || selectedCategory !== 'All Categories' || priceRange !== 'Any Price'
-            ? `Found ${filteredServices.length} services matching your criteria`
-            : 'Discover amazing services from fellow students and campus vendors'}
+            ? `Found ${filteredServices.length} products matching your criteria`
+            : 'Pre-order exclusive products from student entrepreneurs before the trade fair'}
         </p>
       </div>
 
       {filteredServices.length === 0 ? (
         <div className="text-center py-20 bg-white rounded-3xl shadow-xl border border-gray-100">
-          <div className="text-8xl mb-6">🔍</div>
-          <h3 className="text-3xl font-bold text-gray-700 mb-4 font-display">No services found</h3>
+          <div className="text-8xl mb-6">🛍️</div>
+          <h3 className="text-3xl font-bold text-gray-700 mb-4 font-display">No products found</h3>
           <p className="text-gray-500 mb-8 text-lg max-w-md mx-auto">
             Try adjusting your search terms or filters to find what you're looking for
           </p>

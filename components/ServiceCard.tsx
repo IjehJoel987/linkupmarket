@@ -1,13 +1,20 @@
 // components/ServiceCard.tsx
+'use client';
+
+import { useState } from 'react';
 import Link from 'next/link';
-import { User, CheckCircle, Flame } from 'lucide-react';
+import { User, CheckCircle, Flame, ShoppingCart, Plus } from 'lucide-react';
 import RatingSystem from './RatingSystem';
+import { useCartStore } from '@/lib/cart-store';
 
 interface ServiceCardProps {
   service: any;
 }
 
 export default function ServiceCard({ service }: ServiceCardProps) {
+  const [isAdding, setIsAdding] = useState(false);
+  const { addItem } = useCartStore();
+
   const fields = service.fields;
   const title = fields.Title || 'No Title';
   const linkupPrice = fields.Price || 0;
@@ -35,45 +42,80 @@ export default function ServiceCard({ service }: ServiceCardProps) {
   const totalRating = fields.Total_Rating || 0;
   const reviewCount = fields.Review_Count || 0;
 
+  const handleAddToCart = async (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setIsAdding(true);
+
+    const cartItem = {
+      id: service.id,
+      title,
+      price: linkupPrice,
+      image: firstImage || '/placeholder-product.jpg',
+      vendorName: sellerName,
+      quantity: 1,
+    };
+
+    addItem(cartItem);
+    setIsAdding(false);
+  };
+
   return (
-    <Link href={`/services/${service.id}`}>
-      <div className="bg-white rounded-3xl overflow-hidden shadow-lg card-hover border border-gray-100 group">
+    <Link href={`/services/${service.id}`} className="block">
+      <div className="bg-white rounded-3xl overflow-hidden shadow-lg card-hover border border-gray-100 group cursor-pointer">
         {/* Image */}
         <div className="relative h-56 bg-gradient-to-br from-purple-100 via-purple-50 to-pink-100 overflow-hidden">
-          {firstImage ? (
-            <img
-              src={firstImage}
-              alt={title}
-              className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-            />
-          ) : (
-            <div className="w-full h-full flex items-center justify-center text-7xl opacity-50">
-              📷
+        {firstImage ? (
+          <img
+            src={firstImage}
+            alt={title}
+            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+          />
+        ) : (
+          <div className="w-full h-full flex items-center justify-center text-7xl opacity-50">
+            📷
+          </div>
+        )}
+
+        {/* Badges */}
+        <div className="absolute top-3 left-3 flex flex-col gap-2">
+          {fields.Verified && (
+            <div className="bg-green-500 text-white text-xs px-3 py-1.5 rounded-full font-semibold flex items-center gap-1 shadow-lg">
+              <CheckCircle className="w-3 h-3" />
+              Verified
             </div>
           )}
-
-          {/* Badges */}
-          <div className="absolute top-3 left-3 flex flex-col gap-2">
-            {fields.Verified && (
-              <div className="bg-green-500 text-white text-xs px-3 py-1.5 rounded-full font-semibold flex items-center gap-1 shadow-lg">
-                <CheckCircle className="w-3 h-3" />
-                Verified
-              </div>
-            )}
-            {fields.Popular && (
-              <div className="bg-gradient-to-r from-orange-500 to-red-500 text-white text-xs px-3 py-1.5 rounded-full font-semibold flex items-center gap-1 shadow-lg">
-                <Flame className="w-3 h-3" />
-                Popular
-              </div>
-            )}
-          </div>
-
-          {/* Overlay on hover */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          {fields.Popular && (
+            <div className="bg-gradient-to-r from-orange-500 to-red-500 text-white text-xs px-3 py-1.5 rounded-full font-semibold flex items-center gap-1 shadow-lg">
+              <Flame className="w-3 h-3" />
+              Popular
+            </div>
+          )}
         </div>
 
-        {/* Content */}
-        <div className="p-6">
+        {/* Add to Cart Button Overlay */}
+        <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+          <button
+            onClick={handleAddToCart}
+            disabled={isAdding}
+            className="bg-gradient-to-r from-purple-600 to-pink-600 text-white px-6 py-3 rounded-full font-semibold flex items-center gap-2 hover:shadow-xl transform hover:scale-105 transition-all duration-200 disabled:opacity-50"
+          >
+            {isAdding ? (
+              <>
+                <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                Adding...
+              </>
+            ) : (
+              <>
+                <ShoppingCart className="w-4 h-4" />
+                Add to Cart
+              </>
+            )}
+          </button>
+        </div>
+      </div>
+
+      {/* Content */}
+      <div className="p-6">
           {/* Pricing Section */}
           <div className="mb-4">
             {vendorPrice && (
@@ -113,7 +155,7 @@ export default function ServiceCard({ service }: ServiceCardProps) {
               readonly={false}
             />
           </div>
-        </div>
+          </div>
       </div>
     </Link>
   );
