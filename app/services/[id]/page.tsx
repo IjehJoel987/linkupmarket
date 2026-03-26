@@ -22,7 +22,7 @@ function AddToCartButton({ service }: { service: any }) {
 
   const handleClick = async () => {
     setAdding(true);
-    addItem({ id: service.id, title, price, image, vendorName, quantity: 1 });
+    addItem({ id: service.id, title, price, image, vendorName });
     setAdding(false);
   };
 
