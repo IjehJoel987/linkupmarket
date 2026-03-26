@@ -53,7 +53,6 @@ export default function Navbar() {
               alt="LinkUp Marketplace"
               className="h-16 w-auto group-hover:scale-110 transition-transform duration-300"
             />
-            <span className="ml-3 text-2xl font-bold gradient-text hidden sm:block">LinkUp</span>
           </Link>
 
           <div className="hidden md:flex items-center space-x-8">
