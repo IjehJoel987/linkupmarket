@@ -285,14 +285,14 @@ export default function ServiceDetailPage({
               </div>
 
               {/* Safety Tips */}
-              <div className="mt-6 bg-yellow-50 border border-yellow-200 rounded-lg p-4">
+              {/* <div className="mt-6 bg-yellow-50 border border-yellow-200 rounded-lg p-4">
                 <h4 className="font-semibold text-yellow-800 mb-2">🛡️ Safety Tips</h4>
                 <ul className="text-sm text-yellow-700 space-y-1">
                   <li>• Meet in public places</li>
                   <li>• Inspect before paying</li>
                   <li>• Avoid prepayments</li>
                 </ul>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
