@@ -46,7 +46,7 @@ export default async function HomePage() {
             </p>
             <p className="text-lg md:text-xl mb-8 text-yellow-100 max-w-4xl mx-auto leading-relaxed drop-shadow-md">
               LinkUp Trade Fair brings together the best student entrepreneurs on campus.
-              <span className="block mt-2 font-bold text-yellow-300 text-2xl">Pre-Order Now • Pay ₦850 Delivery Fee • Get Door Delivery 🚚</span>
+              <span className="block mt-2 font-bold text-yellow-300 text-2xl">Pre-Order Now • Get Door Delivery 🚚</span>
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <Link
