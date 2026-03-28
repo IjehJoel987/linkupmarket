@@ -261,7 +261,7 @@ export default function ServiceDetailPage({
 
               {/* Contact Buttons */}
               <div className="space-y-3">
-                {whatsapp && (
+                /* {whatsapp && (
                   <a
                     href={`https://wa.me/${whatsapp}?text=Hi! I'm interested in your service: ${fields.Title}`}
                     target="_blank"
@@ -270,7 +270,7 @@ export default function ServiceDetailPage({
                   >
                     💬 Chat on WhatsApp
                   </a>
-                )}
+                )} */
                 
                 {telegram && (
                   <a
