@@ -259,25 +259,22 @@ export default function ServiceDetailPage({
                 </div>
               </div>
 
-              {/* Contact Buttons */}
-              <div className="space-y-3">
-                /* {whatsapp && (
-                  <a
-                    href={`https://wa.me/${whatsapp}?text=Hi! I'm interested in your service: ${fields.Title}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block w-full py-3 bg-green-500 text-white rounded-lg text-center font-semibold hover:bg-green-600 transition"
-                  >
-                    💬 Chat on WhatsApp
-                  </a>
-                )} */
-                
+              {/* Contact & Inquiry Section */}
+              <div className="space-y-4">
+                {/* Inquiry Message */}
+                <div className="bg-gradient-to-r from-purple-50 to-pink-50 border border-purple-200 rounded-lg p-4">
+                  <p className="text-gray-700 text-sm leading-relaxed">
+                    <span className="font-semibold text-purple-600">Need more details?</span> Have questions about size, color, specifications, or customization? Chat with LinkUp directly on Telegram for quick responses and personalized assistance! 🎯
+                  </p>
+                </div>
+
+                {/* Telegram Contact Button */}
                 {telegram && (
                   <a
                     href={`https://t.me/${telegram.replace('@', '')}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="block w-full py-3 bg-blue-500 text-white rounded-lg text-center font-semibold hover:bg-blue-600 transition"
+                    className="block w-full py-3 bg-blue-500 text-white rounded-lg text-center font-semibold hover:bg-blue-600 transition shadow-md hover:shadow-lg"
                   >
                     💬 Chat on Telegram
                   </a>
