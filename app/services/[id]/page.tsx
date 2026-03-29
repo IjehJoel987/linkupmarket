@@ -271,7 +271,7 @@ export default function ServiceDetailPage({
                 {/* Telegram Contact Button */}
                 {telegram && (
                   <a
-                    href={`https://t.me/${telegram.replace('@', '')}`}
+                    href={`https://t.me/${telegram.replace('@', '')}?text=Hi! I'm interested in your service:%0a%0a📦 *${fields.Title}*%0a💰 Price: ₦${linkupPrice.toLocaleString()}${savings > 0 ? `%0a💰 I save: ₦${savings.toLocaleString()}` : ''}%0a%0aLinkUp can you provide more details?`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="block w-full py-3 bg-blue-500 text-white rounded-lg text-center font-semibold hover:bg-blue-600 transition shadow-md hover:shadow-lg"
