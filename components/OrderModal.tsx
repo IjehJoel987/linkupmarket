@@ -43,7 +43,7 @@ export default function OrderModal({ isOpen, onClose }: OrderModalProps) {
 
     const message = `🛒 *NEW PRE-ORDER*\n\n📦 *Items:*\n${orderSummary}\n\n💰 *Subtotal:* ₦${subtotal.toLocaleString()}\n🚚 *Delivery Fee:* ₦${deliveryFee.toLocaleString()}\n💵 *Total:* ₦${total.toLocaleString()}\n\n📍 *Delivery Address:* ${address || '[Please provide your room/hostel details]'}\n\n✅ *Payment Instructions:*\nSend ₦${total.toLocaleString()} to our account and reply with proof of payment.`;
 
-    return `https://t.me/J_0_3_l?text=${encodeURIComponent(message)}`;
+    return `https://t.me/linkupmarket?text=${encodeURIComponent(message)}`;
   };
 
   return (
