@@ -38,8 +38,8 @@ export default function OrderModal({ isOpen, onClose }: OrderModalProps) {
   // construct Telegram URL for chat link
   const getTelegramUrl = () => {
     const orderSummary = items.map(item =>
-      `• ${item.title} (₦${item.price.toLocaleString()})`
-    ).join('\n');
+      `• ${item.title} (₦${item.price.toLocaleString()})\n  👤 Vendor: ${item.vendorName}`
+    ). join('\n');
 
     const message = `🛒 *NEW PRE-ORDER*\n\n📦 *Items:*\n${orderSummary}\n\n💰 *Subtotal:* ₦${subtotal.toLocaleString()}\n🚚 *Delivery Fee:* ₦${deliveryFee.toLocaleString()}\n💵 *Total:* ₦${total.toLocaleString()}\n\n📍 *Delivery Address:* ${address || '[Please provide your room/hostel details]'}\n\n✅ *Payment Instructions:*\nSend ₦${total.toLocaleString()} to our account and reply with proof of payment.`;
 
