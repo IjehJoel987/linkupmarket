@@ -43,20 +43,21 @@ export default function CartDropdown() {
             onClick={() => setIsOpen(false)}
           />
 
-          {/* Cart Panel */}
-          <div className="absolute right-0 top-full mt-2 w-96 bg-white rounded-2xl shadow-2xl border border-gray-100 z-50 max-h-[80vh] overflow-y-auto">
-            {/* Header */}
-            <div className="flex items-center justify-between p-4 border-b border-gray-100">
-              <h3 className="text-lg font-semibold text-gray-800">
-                Shopping Cart ({itemCount})
-              </h3>
-              <button
-                onClick={() => setIsOpen(false)}
-                className="p-1 hover:bg-gray-100 rounded-lg transition-colors"
-              >
-                <X className="w-5 h-5" />
-              </button>
-            </div>
+          {/* Cart Panel - Responsive & Screen-Safe */}
+          <div className="absolute top-full mt-2 z-50 w-screen max-w-sm md:max-w-md px-2 md:px-0 md:right-0 left-0 md:left-auto">
+            <div className="bg-white rounded-2xl shadow-2xl border border-gray-100 max-h-[80vh] overflow-y-auto">
+              {/* Header */}
+              <div className="flex items-center justify-between p-4 border-b border-gray-100">
+                <h3 className="text-lg font-semibold text-gray-800">
+                  Shopping Cart ({itemCount})
+                </h3>
+                <button
+                  onClick={() => setIsOpen(false)}
+                  className="p-1 hover:bg-gray-100 rounded-lg transition-colors"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
 
             {/* Cart Items */}
             <div className="max-h-[60vh] overflow-y-auto">
@@ -140,6 +141,7 @@ export default function CartDropdown() {
                 </div>
               </div>
             )}
+            </div>
           </div>
         </>
       )}
