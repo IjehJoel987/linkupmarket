@@ -51,7 +51,10 @@ export default function Navbar() {
             <img
               src="/linkup_logo.PNG"
               alt="LinkUp Marketplace"
-              className="h-16 w-auto group-hover:scale-110 transition-transform duration-300"
+              className="h-16 w-auto group-hover:scale-110 group-hover:brightness-0 group-hover:saturate-200 group-hover:hue-rotate-180 transition-all duration-300"
+              style={{
+                filter: 'drop-shadow(0px 0px 2px rgba(0,0,0,0.1))'
+              }}
             />
           </Link>
 
