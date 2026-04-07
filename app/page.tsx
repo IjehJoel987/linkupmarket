@@ -95,7 +95,7 @@ export default async function HomePage() {
               </div>
               <h3 className="text-xl font-semibold text-gray-800 mb-2">2. Pay & Confirm</h3>
               <p className="text-gray-600">
-                Chat us on Telegram, pay ₦850 delivery fee + product cost. We verify payment instantly.
+                Chat us on Telegram, pay ₦400 delivery fee + product cost. We verify payment instantly.
               </p>
             </div>
 
