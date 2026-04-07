@@ -36,32 +36,28 @@ export default async function HomePage() {
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <div className="animate-fade-in-up">
-            <h1 className="text-6xl md:text-8xl font-extrabold mb-6 font-display leading-tight text-white drop-shadow-2xl">
+            <h1 className="text-5xl md:text-7xl font-extrabold mb-4 leading-tight text-white drop-shadow-2xl">
               Covenant University
-              <span className="block bg-gradient-to-r from-yellow-300 via-pink-300 to-red-400 text-transparent bg-clip-text animate-pulse">
-                Trade Fair 🎪
+              <span className="block text-blue-300 mt-2">
+                Trade Fair
               </span>
             </h1>
-            <p className="text-xl md:text-2xl mb-6 text-white max-w-3xl mx-auto leading-relaxed font-semibold drop-shadow-lg">
-              🎉 Pre-order your favorite products and we'll deliver them to your room!
+            <p className="text-lg md:text-2xl mb-8 text-white max-w-3xl mx-auto leading-relaxed font-semibold drop-shadow-lg">
+              Get your favourite products delivered to you on campus!
             </p>
-            <p className="text-lg md:text-xl mb-8 text-yellow-100 max-w-4xl mx-auto leading-relaxed drop-shadow-md">
-              LinkUp Trade Fair brings together the best student entrepreneurs on campus.
-              <span className="block mt-2 font-bold text-yellow-300 text-2xl">Pre-Order Now • Get Door Delivery 🚚</span>
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
               <Link
                 href="#marketplace"
-                className="btn-primary px-12 py-6 text-2xl font-extrabold rounded-3xl shadow-2xl hover:shadow-pink-500/50 transform hover:scale-110 transition-all duration-300 backdrop-blur-sm bg-gradient-to-r from-pink-500 to-red-500 text-white border-2 border-yellow-300"
+                className="px-16 py-4 text-2xl font-extrabold rounded-full shadow-2xl hover:shadow-blue-500/50 transform hover:scale-110 transition-all duration-300 bg-gradient-to-r from-blue-500 to-blue-600 text-white border-2 border-blue-300 hover:border-blue-100"
               >
-                🛒 Pre-Order with Delivery
+                ORDER NOW
               </Link>
 
               <Link
                 href="/post-service"
-                className="px-10 py-5 text-xl font-bold rounded-3xl transition-all duration-300 bg-white text-purple-600 hover:shadow-2xl hover:scale-105 border-2 border-white shadow-xl"
+                className="px-8 py-3 text-lg font-bold rounded-full transition-all duration-300 bg-white/20 text-white hover:bg-white/30 hover:scale-105 border-2 border-white/50 backdrop-blur-sm"
               >
-                ✨ Sell Products
+                Sell Products
               </Link>
             </div>
           </div>
