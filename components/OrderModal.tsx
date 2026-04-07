@@ -18,7 +18,7 @@ export default function OrderModal({ isOpen, onClose }: OrderModalProps) {
   if (!isOpen) return null;
 
   const subtotal = getTotal();
-  const deliveryFee = 850;
+  const deliveryFee = 400;
   const total = subtotal + deliveryFee;
 
   const handleConfirmOrder = () => {
