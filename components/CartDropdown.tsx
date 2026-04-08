@@ -43,17 +43,21 @@ export default function CartDropdown() {
             onClick={() => setIsOpen(false)}
           />
 
-          {/* Cart Panel - Fully Responsive with Fixed Positioning Fallback */}
+          {/* Cart Panel - Fully Responsive with Device Detection */}
           <div 
-            className="fixed bottom-0 left-0 right-0 md:absolute md:bottom-auto md:top-full md:right-0 md:left-auto z-50 w-full md:w-96 md:mt-2"
+            className="fixed bottom-0 left-0 right-0 lg:absolute lg:bottom-auto lg:top-full lg:right-0 lg:left-auto z-50 w-full lg:w-96 lg:mt-2"
             style={{
               maxHeight: '90vh',
               overflowY: 'auto',
+              // For tablets and larger screens, use absolute positioning
+              ...(typeof window !== 'undefined' && window.innerWidth >= 1024 ? {
+                position: 'absolute',
+              } : {}),
             }}
           >
-            <div className="bg-white rounded-t-2xl md:rounded-2xl shadow-2xl border border-gray-100 h-full md:max-h-[80vh] md:overflow-y-auto">
+            <div className="bg-white rounded-t-2xl lg:rounded-2xl shadow-2xl border border-gray-100 h-full lg:max-h-[80vh] lg:overflow-y-auto">
               {/* Header */}
-              <div className="flex items-center justify-between p-4 border-b border-gray-100 sticky top-0 bg-white z-10 rounded-t-2xl md:rounded-t-2xl">
+              <div className="flex items-center justify-between p-4 border-b border-gray-100 sticky top-0 bg-white z-10 rounded-t-2xl lg:rounded-t-2xl">
                 <h3 className="text-lg font-semibold text-gray-800">
                   Shopping Cart ({itemCount})
                 </h3>
