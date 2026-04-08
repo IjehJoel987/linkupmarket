@@ -30,7 +30,11 @@ function AddToCartButton({ service }: { service: any }) {
     <button
       onClick={handleClick}
       disabled={adding}
-      className="mt-4 w-full flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-600 to-pink-600 text-white font-semibold rounded-lg hover:shadow-xl transition-all duration-200 disabled:opacity-50"
+      className="mt-4 w-full flex items-center justify-center gap-2 px-6 py-4 md:py-3 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-bold rounded-lg hover:shadow-xl transition-all duration-200 disabled:opacity-50 text-base md:text-sm min-h-12 md:min-h-10"
+      style={{
+        backgroundColor: '#9333ea',
+        backgroundImage: 'linear-gradient(to right, #9333ea, #ec4899)',
+      }}
     >
       {adding ? (
         <span className="loader h-5 w-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
