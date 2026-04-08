@@ -125,7 +125,11 @@ export default function OrderModal({ isOpen, onClose }: OrderModalProps) {
 
               <button
                 onClick={handleConfirmOrder}
-                className="w-full bg-gradient-to-r from-purple-600 to-pink-600 text-white py-3 rounded-lg font-semibold hover:shadow-lg transition-all duration-200"
+                className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white py-4 md:py-3 rounded-lg font-bold hover:shadow-lg transition-all duration-200 text-base min-h-12 md:min-h-10"
+                style={{
+                  backgroundColor: '#9333ea',
+                  backgroundImage: 'linear-gradient(to right, #9333ea, #ec4899)',
+                }}
               >
                 Proceed to Payment
               </button>
@@ -167,7 +171,10 @@ export default function OrderModal({ isOpen, onClose }: OrderModalProps) {
                   href={getTelegramUrl()}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex-1 bg-blue-500 text-white py-3 rounded-lg font-semibold hover:bg-blue-600 transition-colors flex items-center justify-center gap-2"
+                  className="flex-1 bg-blue-600 hover:bg-blue-700 text-white py-4 md:py-3 rounded-lg font-bold transition-all duration-200 flex items-center justify-center gap-2 text-base min-h-12 md:min-h-10"
+                  style={{
+                    backgroundColor: '#2563eb',
+                  }}
                 >
                   <MessageCircle className="w-5 h-5" />
                   Chat on Telegram
@@ -176,7 +183,10 @@ export default function OrderModal({ isOpen, onClose }: OrderModalProps) {
 
               <button
                 onClick={handlePaymentComplete}
-                className="w-full bg-green-500 text-white py-3 rounded-lg font-semibold hover:bg-green-600 transition-colors"
+                className="w-full bg-green-600 hover:bg-green-700 text-white py-4 md:py-3 rounded-lg font-bold transition-colors text-base min-h-12 md:min-h-10"
+                style={{
+                  backgroundColor: '#16a34a',
+                }}
               >
                 I've Completed Payment
               </button>
