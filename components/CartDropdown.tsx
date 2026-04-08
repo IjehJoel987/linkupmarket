@@ -43,11 +43,17 @@ export default function CartDropdown() {
             onClick={() => setIsOpen(false)}
           />
 
-          {/* Cart Panel - Responsive & Screen-Safe */}
-          <div className="absolute top-full mt-2 z-50 w-screen max-w-sm md:max-w-md px-2 md:px-0 md:right-0 left-0 md:left-auto">
-            <div className="bg-white rounded-2xl shadow-2xl border border-gray-100 max-h-[80vh] overflow-y-auto">
+          {/* Cart Panel - Fully Responsive with Fixed Positioning Fallback */}
+          <div 
+            className="fixed bottom-0 left-0 right-0 md:absolute md:bottom-auto md:top-full md:right-0 md:left-auto z-50 w-full md:w-96 md:mt-2"
+            style={{
+              maxHeight: '90vh',
+              overflowY: 'auto',
+            }}
+          >
+            <div className="bg-white rounded-t-2xl md:rounded-2xl shadow-2xl border border-gray-100 h-full md:max-h-[80vh] md:overflow-y-auto">
               {/* Header */}
-              <div className="flex items-center justify-between p-4 border-b border-gray-100">
+              <div className="flex items-center justify-between p-4 border-b border-gray-100 sticky top-0 bg-white z-10 rounded-t-2xl md:rounded-t-2xl">
                 <h3 className="text-lg font-semibold text-gray-800">
                   Shopping Cart ({itemCount})
                 </h3>
@@ -134,7 +140,11 @@ export default function CartDropdown() {
                   </button>
                   <button
                     onClick={handleCheckout}
-                    className="flex-1 px-4 py-2 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-lg hover:shadow-lg transition-all duration-200"
+                    className="flex-1 px-4 py-3 md:py-2 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white rounded-lg hover:shadow-lg transition-all duration-200 font-bold text-sm min-h-10 md:min-h-9"
+                    style={{
+                      backgroundColor: '#9333ea',
+                      backgroundImage: 'linear-gradient(to right, #9333ea, #ec4899)',
+                    }}
                   >
                     Order Now
                   </button>
