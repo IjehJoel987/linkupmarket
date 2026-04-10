@@ -54,7 +54,7 @@ export default function ServiceDetailPage({
 }) {
   const [service, setService] = useState<any>(null);
   const [loading, setLoading] = useState(true);
-  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
   const [mainImage, setMainImage] = useState<string>('');
 
   useEffect(() => {
@@ -80,6 +80,26 @@ export default function ServiceDetailPage({
     loadService();
   }, [params]);
 
+  // Keyboard navigation for lightbox
+  useEffect(() => {
+    const handleKeyPress = (e: KeyboardEvent) => {
+      if (selectedImageIndex === null || !service) return;
+      
+      const images = service.fields.Works?.split('\n').filter((url: string) => url.trim()) || [];
+      
+      if (e.key === 'ArrowLeft') {
+        setSelectedImageIndex(prev => prev === 0 ? images.length - 1 : prev! - 1);
+      } else if (e.key === 'ArrowRight') {
+        setSelectedImageIndex(prev => (prev! + 1) % images.length);
+      } else if (e.key === 'Escape') {
+        setSelectedImageIndex(null);
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyPress);
+    return () => window.removeEventListener('keydown', handleKeyPress);
+  }, [selectedImageIndex, service]);
+
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gray-50">
@@ -101,6 +121,9 @@ export default function ServiceDetailPage({
   const whatsapp = fields.Contact || '';
   const telegram = fields.Telegram_Username || '';
   
+  // Get current lightbox image
+  const currentLightboxImage = selectedImageIndex !== null ? images[selectedImageIndex] : null;
+  
   // Get vendor price
   const vendorPriceRaw = fields.Vendor_Price || fields['Vendor Price'] || fields.VendorPrice;
   let vendorPrice = null;
@@ -117,24 +140,73 @@ export default function ServiceDetailPage({
   
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Lightbox Modal */}
-      {selectedImage && (
+      {/* Enhanced Lightbox Modal */}
+      {currentLightboxImage && selectedImageIndex !== null && (
         <div 
-          className="fixed inset-0 bg-black bg-opacity-90 z-50 flex items-center justify-center p-4"
-          onClick={() => setSelectedImage(null)}
+          className="fixed inset-0 bg-black bg-opacity-95 z-50 flex items-center justify-center p-4"
+          onClick={() => setSelectedImageIndex(null)}
         >
+          {/* Close Button */}
           <button 
-            className="absolute top-4 right-4 text-white text-4xl hover:text-gray-300"
-            onClick={() => setSelectedImage(null)}
+            className="absolute top-4 right-4 text-white text-4xl hover:text-gray-300 transition-colors z-10"
+            onClick={() => setSelectedImageIndex(null)}
+            title="Close (ESC)"
           >
             ×
           </button>
+
+          {/* Previous Button */}
+          {images.length > 1 && (
+            <button
+              className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/40 text-white p-3 rounded-full transition-all z-10"
+              onClick={(e) => {
+                e.stopPropagation();
+                setSelectedImageIndex(prev => prev === 0 ? images.length - 1 : prev! - 1);
+              }}
+              title="Previous (← Arrow)"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+            </button>
+          )}
+
+          {/* Main Image */}
           <img 
-            src={selectedImage} 
-            alt="Enlarged view"
-            className="max-w-full max-h-[90vh] object-contain rounded-lg"
+            src={currentLightboxImage} 
+            alt={`Image ${selectedImageIndex + 1}`}
+            className="max-w-full max-h-[85vh] object-contain rounded-lg"
             onClick={(e) => e.stopPropagation()}
           />
+
+          {/* Next Button */}
+          {images.length > 1 && (
+            <button
+              className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/40 text-white p-3 rounded-full transition-all z-10"
+              onClick={(e) => {
+                e.stopPropagation();
+                setSelectedImageIndex(prev => (prev! + 1) % images.length);
+              }}
+              title="Next (→ Arrow)"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
+          )}
+
+          {/* Image Counter */}
+          {images.length > 1 && (
+            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/60 text-white px-4 py-2 rounded-full text-sm font-semibold">
+              {selectedImageIndex + 1} / {images.length}
+            </div>
+          )}
+
+          {/* Keyboard Hints */}
+          <div className="absolute top-4 left-4 text-white/70 text-xs">
+            <p>ESC to close</p>
+            {images.length > 1 && <p>← → to navigate</p>}
+          </div>
         </div>
       )}
 
@@ -154,7 +226,7 @@ export default function ServiceDetailPage({
                 {/* Main Image - Click to Enlarge */}
                 <div 
                   className="relative cursor-pointer group"
-                  onClick={() => setSelectedImage(mainImage)}
+                  onClick={() => setSelectedImageIndex(0)}
                 >
                   <img 
                     src={mainImage} 
@@ -177,7 +249,7 @@ export default function ServiceDetailPage({
                         className="relative cursor-pointer group"
                         onClick={() => {
                           setMainImage(img);
-                          setSelectedImage(img);
+                          setSelectedImageIndex(i);
                         }}
                       >
                         <img 
