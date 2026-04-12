@@ -309,9 +309,77 @@ export default function ServiceDetailPage({
                 />
               </div>
 
-              <p className="text-gray-600 mb-6 leading-relaxed">
+              <p className="text-gray-600 mb-8 leading-relaxed">
                 {fields.Description}
               </p>
+
+              {/* 🔥 ULTRA BOLD INQUIRY SECTION - BEFORE SELLER INFO */}
+              <div className="mb-8 relative">
+                {/* Glow Background */}
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500 rounded-3xl blur-2xl opacity-30 animate-pulse"></div>
+                
+                {/* Main Container */}
+                <div className="relative bg-gradient-to-br from-blue-600 via-blue-500 to-purple-600 rounded-3xl p-8 shadow-2xl border-3 border-blue-300">
+                  {/* Decorative Top Bar */}
+                  <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-yellow-300 via-orange-400 to-yellow-300 rounded-t-3xl"></div>
+
+                  <div className="space-y-4">
+                    {/* Attention Grabber Header */}
+                    <div className="text-center mb-4">
+                      <div className="inline-block">
+                        <span className="text-5xl animate-bounce" style={{animationDuration: '1s'}}>
+                          ⚡❓⚡
+                        </span>
+                      </div>
+                    </div>
+
+                    {/* Main Heading - HUGE & BOLD */}
+                    <div className="text-center">
+                      <h3 className="text-4xl md:text-5xl font-black text-white drop-shadow-lg leading-tight">
+                        GOT QUESTIONS?
+                      </h3>
+                      <p className="text-white text-xl md:text-2xl font-bold mt-2">
+                        Get INSTANT Answers!
+                      </p>
+                      <p className="text-blue-50 text-base font-semibold mt-3">
+                        Size • Color • Specifications • Customization • Even More!
+                      </p>
+                    </div>
+
+                    {/* Telegram Contact Button - MASSIVE & IMPOSSIBLE TO MISS */}
+                    {telegram && (
+                      <a
+                        href={`https://t.me/${telegram.replace('@', '')}?text=Hi! I'm interested in your service:%0a%0a📦 *${fields.Title}*%0a💰 Price: ₦${linkupPrice.toLocaleString()}${savings > 0 ? `%0a💰 You save: ₦${savings.toLocaleString()}` : ''}%0a%0aCan you provide more details?`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="block w-full py-5 md:py-6 bg-white text-blue-600 rounded-2xl text-center font-black text-2xl md:text-3xl hover:scale-110 hover:-translate-y-1 transition-all duration-200 shadow-2xl hover:shadow-blue-500/50 min-h-16 md:min-h-20 flex items-center justify-center gap-2"
+                        style={{
+                          backgroundColor: '#ffffff',
+                          boxShadow: '0 20px 50px rgba(59, 130, 246, 0.4)',
+                        }}
+                      >
+                        💬 CHAT ON TELEGRAM NOW
+                      </a>
+                    )}
+
+                    {/* Urgency & Benefits */}
+                    <div className="grid grid-cols-3 gap-2 pt-2">
+                      <div className="bg-white/20 backdrop-blur text-white px-3 py-2 rounded-lg text-center font-bold text-sm border border-white/30">
+                        <span className="text-xl block mb-1">⚡</span>
+                        Quick
+                      </div>
+                      <div className="bg-white/20 backdrop-blur text-white px-3 py-2 rounded-lg text-center font-bold text-sm border border-white/30">
+                        <span className="text-xl block mb-1">📸</span>
+                        Detailed
+                      </div>
+                      <div className="bg-white/20 backdrop-blur text-white px-3 py-2 rounded-lg text-center font-bold text-sm border border-white/30">
+                        <span className="text-xl block mb-1">✅</span>
+                        Helpful
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
 
               <div className="border-t pt-6 mb-6">
                 <h3 className="font-semibold text-gray-800 mb-3">Seller Information</h3>
@@ -333,28 +401,6 @@ export default function ServiceDetailPage({
                     readonly={false}
                   />
                 </div>
-              </div>
-
-              {/* Contact & Inquiry Section */}
-              <div className="space-y-4">
-                {/* Inquiry Message */}
-                <div className="bg-gradient-to-r from-purple-50 to-pink-50 border border-purple-200 rounded-lg p-4">
-                  <p className="text-gray-700 text-sm leading-relaxed">
-                    <span className="font-semibold text-purple-600">Need more details?</span> Have questions about size, color, specifications, or customization? Chat with LinkUp directly on Telegram for quick responses and personalized assistance! 🎯
-                  </p>
-                </div>
-
-                {/* Telegram Contact Button */}
-                {telegram && (
-                  <a
-                    href={`https://t.me/${telegram.replace('@', '')}?text=Hi! I'm interested in your service:%0a%0a📦 *${fields.Title}*%0a💰 Price: ₦${linkupPrice.toLocaleString()}${savings > 0 ? `%0a💰 I save: ₦${savings.toLocaleString()}` : ''}%0a%0aLinkUp can you provide more details?`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block w-full py-3 bg-blue-500 text-white rounded-lg text-center font-semibold hover:bg-blue-600 transition shadow-md hover:shadow-lg"
-                  >
-                    💬 Chat on Telegram
-                  </a>
-                )}
               </div>
 
               {/* Safety Tips */}
