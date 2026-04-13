@@ -182,18 +182,63 @@ export default function MarketplaceContent({ services }: MarketplaceContentProps
       </div>
 
       {filteredServices.length === 0 ? (
-        <div className="text-center py-20 bg-white rounded-3xl shadow-xl border border-gray-100">
-          <div className="text-8xl mb-6">🛍️</div>
-          <h3 className="text-3xl font-bold text-gray-700 mb-4 font-display">No products found</h3>
-          <p className="text-gray-500 mb-8 text-lg max-w-md mx-auto">
-            Try adjusting your search terms or filters to find what you're looking for
-          </p>
-          <button
-            onClick={clearFilters}
-            className="btn-primary px-8 py-4 text-lg"
-          >
-            Clear All Filters
-          </button>
+        <div className="py-20 bg-white rounded-3xl shadow-xl border border-gray-100">
+          <div className="text-center mb-8">
+            <div className="text-8xl mb-6">🔍</div>
+            <h3 className="text-4xl font-bold text-gray-800 mb-4 font-display">Product Not Found?</h3>
+            <p className="text-gray-600 mb-2 text-lg">
+              We might have what you're looking for or can help you source it!
+            </p>
+          </div>
+
+          {/* Call to Action Card */}
+          <div className="max-w-2xl mx-auto bg-gradient-to-r from-blue-50 to-purple-50 rounded-2xl p-8 border-2 border-blue-200 mb-8">
+            <div className="space-y-4">
+              <div className="flex items-center gap-3">
+                <span className="text-4xl">💬</span>
+                <div>
+                  <h4 className="text-2xl font-bold text-gray-800">Can't Find What You Want?</h4>
+                  <p className="text-gray-600 font-semibold">Chat with LinkUp directly on Telegram!</p>
+                </div>
+              </div>
+              
+              <ul className="space-y-2 text-gray-700 font-semibold ml-16">
+                <li className="flex items-center gap-2">
+                  <span className="text-blue-600">✓</span> Tell us what you're looking for
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="text-blue-600">✓</span> Get instant replies
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="text-blue-600">✓</span> We'll deliver it straight to your room
+                </li>
+              </ul>
+
+              <a
+                href="https://t.me/linkupmarket?text=Hi! I'm looking for a specific product that I didn't find on your platform. Can you help me source it?"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block w-full py-4 md:py-5 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl text-center font-bold text-lg hover:shadow-lg hover:-translate-y-1 transition-all duration-200 mt-6"
+              >
+                💬 Chat with LinkUp on Telegram
+              </a>
+
+              <p className="text-center text-sm text-gray-600 mt-4">
+                ⚡ Average response time: <span className="font-bold">Less than 2 minutes</span>
+              </p>
+            </div>
+          </div>
+
+          {/* Original Clear Filters Button */}
+          <div className="text-center">
+            <p className="text-gray-600 mb-4">Or:</p>
+            <button
+              onClick={clearFilters}
+              className="btn-primary px-8 py-4 text-lg"
+            >
+              Clear All Filters
+            </button>
+          </div>
         </div>
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
