@@ -13,6 +13,12 @@ const CartDropdown = dynamic(() => import('./CartDropdown'), {
   loading: () => <div className="w-6 h-6" /> // Placeholder while loading
 });
 
+// Dynamically import HelpWidget to avoid hydration issues
+const HelpWidget = dynamic(() => import('./HelpWidget'), {
+  ssr: false,
+  loading: () => <div className="w-6 h-6" /> // Placeholder while loading
+});
+
 export default function Navbar() {
   const [user, setUser] = useState<any>(null);
   const query = useSearchStore((state) => state.query);
@@ -93,6 +99,7 @@ export default function Navbar() {
                 className="pl-9 pr-3 py-2 border border-gray-200 rounded-full w-64 focus:outline-none focus:ring-2 focus:ring-purple-500"
               />
             </div>
+            <HelpWidget />
             <CartDropdown />
             {user ? (
               <div className="flex items-center gap-4">
