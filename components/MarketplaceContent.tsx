@@ -172,7 +172,7 @@ export default function MarketplaceContent({ services }: MarketplaceContentProps
         <h2 className="text-4xl font-bold mb-4 font-display text-gray-800">
           {searchQuery || selectedCategory !== 'All Categories' || priceRange !== 'Any Price'
             ? '🔍 Search Results'
-            : '🎪 Trade Fair Products'}
+            : 'LinkUp Products'}
         </h2>
         <p className="text-gray-600 text-lg">
           {searchQuery || selectedCategory !== 'All Categories' || priceRange !== 'Any Price'
