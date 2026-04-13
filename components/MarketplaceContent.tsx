@@ -102,7 +102,7 @@ export default function MarketplaceContent({ services }: MarketplaceContentProps
           <div className="p-3 bg-gradient-to-r from-purple-100 to-pink-100 rounded-2xl">
             <Search className="w-6 h-6 text-purple-600" />
           </div>
-          <h2 className="text-2xl font-bold text-gray-800 font-display">Find Your Perfect Trade Fair Product</h2>
+          <h2 className="text-2xl font-bold text-gray-800 font-display">Find Your Perfect Product</h2>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
