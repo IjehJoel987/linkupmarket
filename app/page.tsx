@@ -135,7 +135,7 @@ export default async function HomePage() {
             </div>
             <div className="text-center p-6 bg-blue-50 rounded-2xl border border-blue-100">
               <h4 className="text-xl font-semibold text-gray-800 mb-2">Door Delivery</h4>
-              <p className="text-gray-600">Guaranteed delivery from seller to student room for ₦850.</p>
+              <p className="text-gray-600">Guaranteed delivery from seller to student room for ₦400.</p>
             </div>
             <div className="text-center p-6 bg-green-50 rounded-2xl border border-green-100">
               <h4 className="text-xl font-semibold text-gray-800 mb-2">Direct Telegram Support</h4>
