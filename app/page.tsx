@@ -39,7 +39,7 @@ export default async function HomePage() {
             <h1 className="text-5xl md:text-7xl font-extrabold mb-4 leading-tight text-white drop-shadow-2xl">
               Covenant University
               <span className="block text-blue-300 mt-2">
-                Trade Fair
+                LinkUp
               </span>
             </h1>
             <p className="text-lg md:text-2xl mb-8 text-white max-w-3xl mx-auto leading-relaxed font-semibold drop-shadow-lg">
