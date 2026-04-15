@@ -4,7 +4,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { User, CheckCircle, Flame, ShoppingCart, Plus } from 'lucide-react';
-import RatingSystem from './RatingSystem';
+import RatingSystem from '@/components/RatingSystem';
 import { useCartStore } from '@/lib/cart-store';
 
 interface ServiceCardProps {
