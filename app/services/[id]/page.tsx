@@ -18,7 +18,7 @@ function AddToCartButton({ service }: { service: any }) {
   const price = service.fields.Price || 0;
   const images = service.fields.Works?.split('\n').filter((url: string) => url.trim()) || [];
   const image = images[0] || '/placeholder-product.jpg';
-  const vendorName = service.fields.Name || 'Anonymous';
+  const vendorName = service.fields.Vendor_Name || 'Anonymous';
 
   const handleClick = async () => {
     setAdding(true);
