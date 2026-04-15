@@ -18,7 +18,7 @@ export default function ServiceCard({ service }: ServiceCardProps) {
   const fields = service.fields;
   const title = fields.Title || 'No Title';
   const linkupPrice = fields.Price || 0;
-  const sellerName = fields.Name || 'Anonymous';
+  const sellerName = fields.Vendor_Name || 'Anonymous';
 
   // Get vendor price
   const vendorPriceRaw = fields.Vendor_Price || fields['Vendor Price'] || fields.VendorPrice;

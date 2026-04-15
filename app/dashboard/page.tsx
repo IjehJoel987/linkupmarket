@@ -49,7 +49,7 @@ export default function DashboardPage() {
       if (res.ok) {
         const data = await res.json();
         // Filter services by user name
-        const userServices = data.records.filter((record: any) => record.fields.Name === userName);
+        const userServices = data.records.filter((record: any) => record.fields.Vendor_Name === userName);
         setServices(userServices);
       }
     } catch (error) {

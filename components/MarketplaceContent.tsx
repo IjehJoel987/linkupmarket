@@ -41,7 +41,7 @@ export default function MarketplaceContent({ services }: MarketplaceContentProps
       const fields = service.fields;
       const title = fields.Title?.toLowerCase() || '';
       const description = fields.Description?.toLowerCase() || '';
-      const name = fields.Name?.toLowerCase() || '';
+      const name = fields.Vendor_Name?.toLowerCase() || '';
       const price = fields.Price || 0;
 
       // Search filter
