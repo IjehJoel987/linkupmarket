@@ -21,7 +21,7 @@ export async function POST(request: NextRequest) {
 
     // Create user data
     const userData = {
-      Name: name,
+      Full_Name: name,
       Email: email,
       Password: password,
       User_Type: userType || 'Buyer',
