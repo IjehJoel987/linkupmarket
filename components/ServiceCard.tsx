@@ -3,7 +3,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { User, CheckCircle, Flame, ShoppingCart, Plus } from 'lucide-react';
+import { User, CheckCircle, Flame, ShoppingCart, Plus, Truck } from 'lucide-react';
 import RatingSystem from './RatingSystem';
 import { useCartStore } from '@/lib/cart-store';
 
@@ -88,6 +88,12 @@ export default function ServiceCard({ service }: ServiceCardProps) {
             <div className="bg-gradient-to-r from-orange-500 to-red-500 text-white text-xs px-3 py-1.5 rounded-full font-semibold flex items-center gap-1 shadow-lg">
               <Flame className="w-3 h-3" />
               Popular
+            </div>
+          )}
+          {linkupPrice < 5000 && (
+            <div className="bg-gradient-to-r from-emerald-500 to-teal-500 text-white text-xs px-3 py-1.5 rounded-full font-semibold flex items-center gap-1 shadow-lg">
+              <Truck className="w-3 h-3" />
+              Free Delivery
             </div>
           )}
         </div>
