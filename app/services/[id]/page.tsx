@@ -4,7 +4,7 @@
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
-import { ShoppingCart } from 'lucide-react';
+import { ShoppingCart, Truck } from 'lucide-react';
 import RatingSystem from '@/components/RatingSystem';
 import Navbar from '../../../components/Navbar';
 import { useCartStore } from '@/lib/cart-store';
@@ -300,6 +300,17 @@ export default function ServiceDetailPage({
                 {savings > 0 && (
                   <div className="text-xl font-bold text-green-600">
                     You save: ₦{savings.toLocaleString()}
+                  </div>
+                )}
+
+                {/* Free Delivery Banner */}
+                {linkupPrice < 5000 && (
+                  <div className="mt-4 p-4 bg-gradient-to-r from-emerald-50 to-teal-50 border-2 border-emerald-300 rounded-lg flex items-start gap-3 shadow-md">
+                    <div className="text-3xl flex-shrink-0">🚚</div>
+                    <div>
+                      <p className="font-bold text-emerald-900 text-lg">Free Delivery Eligible!</p>
+                      <p className="text-emerald-700 text-sm">Get free room delivery on all orders below ₦5,000</p>
+                    </div>
                   </div>
                 )}
 
