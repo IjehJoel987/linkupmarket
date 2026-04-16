@@ -111,7 +111,6 @@ export default function ServiceDetailPage({
       price: linkupPrice,
       image: mainImage || '/placeholder-product.jpg',
       vendorName: fields.Vendor_Name || 'Anonymous',
-      quantity: 1,
     });
     setIsAdding(false);
   };
