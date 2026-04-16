@@ -242,7 +242,7 @@ export default function ServiceDetailPage({
                 <ul className="text-xs text-gray-700 space-y-1">
                   <li>• Verified vendors</li>
                   <li>• Room delivery</li>
-                  <li>• <2 min response on Telegram</li>
+                  <li>• Response time &lt;2 min on Telegram</li>
                 </ul>
               </div>
             </div>
