@@ -18,7 +18,7 @@ function AddToCartButton({ service }: { service: any }) {
   const price = service.fields.Price || 0;
   const images = service.fields.Works?.split('\n').filter((url: string) => url.trim()) || [];
   const image = images[0] || '/placeholder-product.jpg';
-  const vendorName = service.fields.Name || 'Anonymous';
+  const vendorName = service.fields.Vendor_Name || 'Anonymous';
 
   const handleClick = async () => {
     setAdding(true);
@@ -348,7 +348,7 @@ export default function ServiceDetailPage({
                 <h3 className="font-semibold text-gray-800 mb-3">Seller Information</h3>
                 <div className="flex items-center gap-3 mb-2">
                   <span className="text-2xl">👤</span>
-                  <span className="font-medium">{fields.Name}</span>
+                  <span className="font-medium">{fields.Vendor_Name}</span>
                   {fields.Verified && (
                     <span className="bg-green-500 text-white text-xs px-2 py-1 rounded-full">✓ Verified</span>
                   )}
