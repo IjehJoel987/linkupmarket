@@ -177,7 +177,7 @@ export default function MarketplaceContent({ services }: MarketplaceContentProps
         <p className="text-gray-600 text-lg">
           {searchQuery || selectedCategory !== 'All Categories' || priceRange !== 'Any Price'
             ? `Found ${filteredServices.length} products matching your criteria`
-            : 'Pre-order exclusive products from student entrepreneurs before the trade fair'}
+            : 'Get your products delivered to your doorstep in less than 24 hours!'}
         </p>
       </div>
 
