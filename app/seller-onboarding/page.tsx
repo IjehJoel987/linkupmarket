@@ -88,7 +88,7 @@ export default function SellerOnboarding() {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 pt-4">
                 <a
-                  href="https://t.me/linkupmarketplace"
+                  href="https://t.me/linkupmarket"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-lg font-bold text-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
@@ -244,7 +244,7 @@ export default function SellerOnboarding() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
-              href="https://t.me/linkupmarketplace"
+              href="https://t.me/linkupmarket"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-lg font-bold text-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
