@@ -73,17 +73,10 @@ export default function Navbar() {
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-purple-600 to-pink-600 group-hover:w-full transition-all duration-300"></span>
             </Link>
             <Link
-              href="/post-service"
+              href="/seller-onboarding"
               className="text-gray-700 hover:text-purple-600 font-semibold transition-colors duration-200 relative group"
             >
-              Sell Services
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-purple-600 to-pink-600 group-hover:w-full transition-all duration-300"></span>
-            </Link>
-            <Link
-              href="/dashboard"
-              className="text-gray-700 hover:text-purple-600 font-semibold transition-colors duration-200 relative group"
-            >
-              Dashboard
+              Become a Seller
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-purple-600 to-pink-600 group-hover:w-full transition-all duration-300"></span>
             </Link>
           </div>
