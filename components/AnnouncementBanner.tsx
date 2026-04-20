@@ -22,10 +22,10 @@ export default function AnnouncementBanner() {
         
         <div className="flex gap-8">
           <div className="scroll-text font-semibold text-lg">
-            🎉 First Purchase Gets FREE DELIVERY!  Order now and save on dlivery of products to hall of residence
+            🎉 First Purchase Gets FREE DELIVERY!  Order now and save on delivery of products to hall of residence
           </div>
           <div className="scroll-text font-semibold text-lg">
-            🎉 First Purchase Gets FREE DELIVERY!  Order now and save on dlivery of products to hall of residence
+            🎉 First Purchase Gets FREE DELIVERY!  Order now and save on delivery of products to hall of residence
           </div>
         </div>
       </div>
