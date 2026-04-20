@@ -11,7 +11,7 @@ export default function SellerOnboarding() {
   const benefits = [
     {
       icon: Users,
-      title: 'Reach 10,000+ Students',
+      title: 'Reach 4000+ Students',
       description: 'Access a massive audience of Covenant University students actively looking to buy and hire services.'
     },
     {
@@ -81,7 +81,7 @@ export default function SellerOnboarding() {
                 Ready to Reach More Customers?
               </h1>
               <p className="text-xl text-gray-700">
-                Tired of spamming WhatsApp groups and wasting time on unorganized platforms?
+                Tired of spamming Telegram groups and wasting time on unorganized platforms?
               </p>
               <p className="text-lg text-gray-600">
                 LinkUp gives you free visibility to more than 4,000 Covenant University students actively looking for products and services—all without the spam.
