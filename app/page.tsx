@@ -54,13 +54,6 @@ export default async function HomePage() {
               >
                 ORDER NOW
               </Link>
-
-              <Link
-                href="/post-service"
-                className="px-8 py-3 text-lg font-bold rounded-full transition-all duration-300 bg-white/20 text-white hover:bg-white/30 hover:scale-105 border-2 border-white/50 backdrop-blur-sm"
-              >
-                Sell Products
-              </Link>
             </div>
           </div>
         </div>
