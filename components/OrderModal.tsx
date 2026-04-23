@@ -18,8 +18,7 @@ export default function OrderModal({ isOpen, onClose }: OrderModalProps) {
   if (!isOpen) return null;
 
   const subtotal = getTotal();
-  const deliveryFee = 400;
-  const total = subtotal + deliveryFee;
+  const total = subtotal;
 
   const handleConfirmOrder = () => {
     setStep('payment');
@@ -41,7 +40,7 @@ export default function OrderModal({ isOpen, onClose }: OrderModalProps) {
       `• ${item.title} (₦${item.price.toLocaleString()})\n  👤 Vendor: ${item.vendorName}`
     ). join('\n');
 
-    const message = `🛒 *NEW PRE-ORDER*\n\n📦 *Items:*\n${orderSummary}\n\n💰 *Subtotal:* ₦${subtotal.toLocaleString()}\n🚚 *Delivery Fee:* ₦${deliveryFee.toLocaleString()}\n💵 *Total:* ₦${total.toLocaleString()}\n\n📍 *Delivery Address:* ${address || '[Please provide your room/hostel details]'}\n\n✅ *Payment Instructions:*\nSend ₦${total.toLocaleString()} to our account and reply with proof of payment.`;
+    const message = `🛒 *NEW PRE-ORDER*\n\n📦 *Items:*\n${orderSummary}\n\n💰 *Total:* ₦${total.toLocaleString()}\n\n📍 *Delivery Address:* ${address || '[Please provide your room/hostel details]'}\n\n✅ *Payment Instructions:*\nSend ₦${total.toLocaleString()} to our account and reply with proof of payment.`;
 
     return `https://t.me/linkupmarket?text=${encodeURIComponent(message)}`;
   };
@@ -82,10 +81,6 @@ export default function OrderModal({ isOpen, onClose }: OrderModalProps) {
                   <div className="flex justify-between text-sm">
                     <span className="text-gray-600">Subtotal</span>
                     <span className="font-medium">₦{subtotal.toLocaleString()}</span>
-                  </div>
-                  <div className="flex justify-between text-sm">
-                    <span className="text-gray-600">Delivery Fee</span>
-                    <span className="font-medium">₦{deliveryFee.toLocaleString()}</span>
                   </div>
                   <hr className="my-2" />
                   <div className="flex justify-between font-bold text-lg">
