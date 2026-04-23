@@ -175,16 +175,6 @@ export default function OrderModal({ isOpen, onClose }: OrderModalProps) {
                   Chat on Telegram
                 </a>
               </div>
-
-              <button
-                onClick={handlePaymentComplete}
-                className="w-full bg-green-600 hover:bg-green-700 text-white py-4 md:py-3 rounded-lg font-bold transition-colors text-base min-h-12 md:min-h-10"
-                style={{
-                  backgroundColor: '#16a34a',
-                }}
-              >
-                I've Completed Payment
-              </button>
             </div>
           )}
 
