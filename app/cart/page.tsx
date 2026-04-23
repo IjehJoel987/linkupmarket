@@ -12,8 +12,7 @@ export default function CartPage() {
   const [showOrderModal, setShowOrderModal] = useState(false);
 
   const subtotal = getTotal();
-  const deliveryFee = 400;
-  const total = subtotal + deliveryFee;
+  const total = subtotal;
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -135,12 +134,6 @@ export default function CartPage() {
                     <span>Subtotal</span>
                     <span className="font-semibold">
                       ₦{subtotal.toLocaleString()}
-                    </span>
-                  </div>
-                  <div className="flex justify-between text-gray-600">
-                    <span>Delivery Fee</span>
-                    <span className="font-semibold">
-                      ₦{deliveryFee.toLocaleString()}
                     </span>
                   </div>
                 </div>
