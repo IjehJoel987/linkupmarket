@@ -1,7 +1,7 @@
 // app/page.tsx
 import Link from 'next/link';
 import { fetchServices } from '@/lib/airtable';
-import MarketplaceContent from '../components/MarketplaceContent';
+import CategorySection from '../components/CategorySection';
 import Navbar from '../components/Navbar';
 import AnnouncementBanner from '../components/AnnouncementBanner';
 
@@ -108,8 +108,49 @@ export default async function HomePage() {
         </div>
       </div>
 
-      {/* Pass services to client component */}
-      <MarketplaceContent services={services} />
+      {/* LinkUp Categories Section */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div className="mb-12">
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-3">Shop by Category</h2>
+          <p className="text-lg text-gray-600">Browse our curated collections</p>
+        </div>
+
+        {/* LinkUp Foods */}
+        <CategorySection
+          category="🍞 LinkUp Foods"
+          categoryName="LinkUp Foods"
+          emoji="🍞"
+          bannerImage="/api/placeholder/1200/400"
+          products={services}
+        />
+
+        {/* LinkUp Gadgets */}
+        <CategorySection
+          category="⚡ LinkUp Gadgets"
+          categoryName="LinkUp Gadgets"
+          emoji="⚡"
+          bannerImage="/api/placeholder/1200/400"
+          products={services}
+        />
+
+        {/* LinkUp Fashion */}
+        <CategorySection
+          category="👕 LinkUp Fashion"
+          categoryName="LinkUp Fashion"
+          emoji="👕"
+          bannerImage="/api/placeholder/1200/400"
+          products={services}
+        />
+
+        {/* Trade Fair Specials */}
+        <CategorySection
+          category="🛍️ Trade Fair Specials"
+          categoryName="Trade Fair Specials"
+          emoji="🛍️"
+          bannerImage="/api/placeholder/1200/400"
+          products={services}
+        />
+      </div>
 
       {/* Trust & Process Section (Footer Area) */}
       <div className="bg-white py-16">
