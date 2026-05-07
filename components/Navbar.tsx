@@ -3,7 +3,7 @@
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { LogOut, Search } from 'lucide-react';
+import { LogOut, Search, ChevronDown } from 'lucide-react';
 import dynamic from 'next/dynamic';
 import { useSearchStore } from '@/lib/search-store';
 
@@ -21,8 +21,16 @@ const HelpWidget = dynamic(() => import('./HelpWidget'), {
 
 export default function Navbar() {
   const [user, setUser] = useState<any>(null);
+  const [showCategories, setShowCategories] = useState(false);
   const query = useSearchStore((state) => state.query);
   const setQuery = useSearchStore((state) => state.setQuery);
+
+  const categories = [
+    { name: 'LinkUp Foods', href: '#marketplace' },
+    { name: 'LinkUp Gadgets', href: '#marketplace' },
+    { name: 'LinkUp Fashion', href: '#marketplace' },
+    { name: 'Trade Fair Specials', href: '#marketplace' }
+  ];
 
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
@@ -66,12 +74,32 @@ export default function Navbar() {
 
           <div className="hidden md:flex items-center space-x-8">
             <Link
-              href="#marketplace"
+              href="/#marketplace"
               className="text-gray-700 hover:text-purple-600 font-semibold transition-colors duration-200 relative group"
             >
               Browse Services
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-purple-600 to-pink-600 group-hover:w-full transition-all duration-300"></span>
             </Link>
+
+            {/* Categories Dropdown */}
+            <div className="relative group">
+              <button className="text-gray-700 hover:text-purple-600 font-semibold transition-colors duration-200 flex items-center gap-1">
+                Categories
+                <ChevronDown className="w-4 h-4" />
+              </button>
+              <div className="absolute left-0 mt-0 w-56 bg-white rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
+                {categories.map((cat) => (
+                  <Link
+                    key={cat.name}
+                    href={cat.href}
+                    className="block px-4 py-3 text-gray-700 hover:bg-purple-50 hover:text-purple-600 font-medium first:rounded-t-lg last:rounded-b-lg transition-colors"
+                  >
+                    {cat.name}
+                  </Link>
+                ))}
+              </div>
+            </div>
+
             <Link
               href="/seller-onboarding"
               className="text-gray-700 hover:text-purple-600 font-semibold transition-colors duration-200 relative group"
