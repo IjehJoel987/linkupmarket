@@ -17,6 +17,15 @@ export default function MarketplaceContent({ services }: MarketplaceContentProps
   const [priceRange, setPriceRange] = useState('Any Price');
   const [sortBy, setSortBy] = useState('Most Popular');
 
+  // Define LinkUp categories
+  const categoryOptions = [
+    'All Categories',
+    'linkupfood',
+    'linkupgadget',
+    'linkupfashion',
+    'tradefairspecial'
+  ];
+
   // Auto-scroll to products when search query changes
   useEffect(() => {
     if (searchQuery) {
@@ -31,9 +40,8 @@ export default function MarketplaceContent({ services }: MarketplaceContentProps
 
   // Get unique categories
   const categories = useMemo(() => {
-    const cats = services.map(s => s.fields.Title || 'Others');
-    return ['All Categories', ...Array.from(new Set(cats))];
-  }, [services]);
+    return categoryOptions;
+  }, []);
 
   // Filter and sort services
   const filteredServices = useMemo(() => {
@@ -50,9 +58,10 @@ export default function MarketplaceContent({ services }: MarketplaceContentProps
         description.includes(searchQuery.toLowerCase()) ||
         name.includes(searchQuery.toLowerCase());
 
-      // Category filter
+      // Category filter - match against the Category field from Airtable
+      const productCategory = fields.Category || 'Other';
       const matchesCategory = selectedCategory === 'All Categories' ||
-        fields.Title === selectedCategory;
+        productCategory === selectedCategory;
 
       // Price filter
       let matchesPrice = true;
