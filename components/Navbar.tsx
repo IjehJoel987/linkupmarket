@@ -117,7 +117,7 @@ export default function Navbar() {
                 value={query}
                 onChange={handleSearchChange}
                 placeholder="Search products"
-                className="pl-9 pr-3 py-2 border border-gray-200 rounded-full w-64 focus:outline-none focus:ring-2 focus:ring-purple-500"
+                className="pl-9 pr-3 py-2 border border-gray-200 rounded-full w-64 focus:outline-none focus:ring-2 focus:ring-purple-500" 
               />
             </div>
             <HelpWidget />
