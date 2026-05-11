@@ -1,6 +1,7 @@
 // app/page.tsx
 import Link from 'next/link';
 import { fetchServices } from '@/lib/airtable';
+import MarketplaceContent from '../components/MarketplaceContent';
 import CategorySection from '../components/CategorySection';
 import Navbar from '../components/Navbar';
 import AnnouncementBanner from '../components/AnnouncementBanner';
