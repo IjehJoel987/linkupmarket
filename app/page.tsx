@@ -59,95 +59,41 @@ export default async function HomePage() {
         </div>
       </div>
 
-      {/* How It Works Section */}
-      <div className="bg-white py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
-              How LinkUp Delivery Works
-            </h2>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              We're your trusted bridge between amazing student products and convenient delivery to your room.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Step 1 */}
-            <div className="text-center">
-              <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-2xl">🛒</span>
-              </div>
-              <h3 className="text-xl font-semibold text-gray-800 mb-2">1. Pre-Order</h3>
-              <p className="text-gray-600">
-                Browse products, add to cart, and place your pre-order before stock runs out.
-              </p>
-            </div>
-
-            {/* Step 2 */}
-            <div className="text-center">
-              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-2xl">💬</span>
-              </div>
-              <h3 className="text-xl font-semibold text-gray-800 mb-2">2. Pay & Confirm</h3>
-              <p className="text-gray-600">
-                Chat us on Telegram, pay ₦400 delivery fee + product cost. We verify payment instantly.
-              </p>
-            </div>
-
-            {/* Step 3 */}
-            <div className="text-center">
-              <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-2xl">🚚</span>
-              </div>
-              <h3 className="text-xl font-semibold text-gray-800 mb-2">3. Door Delivery</h3>
-              <p className="text-gray-600">
-                We pick up from sellers and deliver directly to your room. Track your order status.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* LinkUp Categories Section */}
+      {/* LinkUp Categories */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-3">Shop by Category</h2>
-          <p className="text-lg text-gray-600">Browse our curated collections</p>
-        </div>
-
         {/* LinkUp Foods */}
         <CategorySection
-          category="🍞 LinkUp Foods"
+          category="linkupfood"
           categoryName="LinkUp Foods"
           emoji="🍞"
-          bannerImage="/api/placeholder/1200/400"
+          bannerImage="https://images.unsplash.com/photo-1555939594-58d7cb561282?w=1200&h=400&fit=crop"
           products={services}
         />
 
         {/* LinkUp Gadgets */}
         <CategorySection
-          category="⚡ LinkUp Gadgets"
+          category="linkupgadget"
           categoryName="LinkUp Gadgets"
           emoji="⚡"
-          bannerImage="/api/placeholder/1200/400"
+          bannerImage="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=1200&h=400&fit=crop"
           products={services}
         />
 
         {/* LinkUp Fashion */}
         <CategorySection
-          category="👕 LinkUp Fashion"
+          category="linkupfashion"
           categoryName="LinkUp Fashion"
           emoji="👕"
-          bannerImage="/api/placeholder/1200/400"
+          bannerImage="https://images.unsplash.com/photo-1441984904556-0ac8d9c97c58?w=1200&h=400&fit=crop"
           products={services}
         />
 
         {/* Trade Fair Specials */}
         <CategorySection
-          category="🛍️ Trade Fair Specials"
+          category="tradefairspecial"
           categoryName="Trade Fair Specials"
           emoji="🛍️"
-          bannerImage="/api/placeholder/1200/400"
+          bannerImage="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=1200&h=400&fit=crop"
           products={services}
         />
       </div>
