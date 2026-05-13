@@ -1,4 +1,3 @@
-
 // app/page.tsx
 import Link from 'next/link';
 import { fetchServices } from '@/lib/airtable';
@@ -68,7 +67,7 @@ export default async function HomePage() {
           category="linkupfood"
           categoryName="LinkUp Foods"
           emoji="🍞"
-          bannerImage="https://images.unsplash.com/photo-1555939594-58d7cb561282?w=1200&h=400&fit=crop"
+          bannerImage="https://images.unsplash.com/photo-1495521821757-a1efb6729352?w=1200&h=400&fit=crop"
           products={services}
         />
 
@@ -77,7 +76,7 @@ export default async function HomePage() {
           category="linkupgadget"
           categoryName="LinkUp Gadgets"
           emoji="⚡"
-          bannerImage="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=1200&h=400&fit=crop"
+          bannerImage="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=1200&h=400&fit=crop"
           products={services}
         />
 
@@ -86,7 +85,7 @@ export default async function HomePage() {
           category="linkupfashion"
           categoryName="LinkUp Fashion"
           emoji="👕"
-          bannerImage="https://images.unsplash.com/photo-1441984904556-0ac8d9c97c58?w=1200&h=400&fit=crop"
+          bannerImage="https://images.unsplash.com/photo-1565958011504-98d342d6f6c5?w=1200&h=400&fit=crop"
           products={services}
         />
 
@@ -95,7 +94,7 @@ export default async function HomePage() {
           category="tradefairspecial"
           categoryName="Trade Fair Specials"
           emoji="🛍️"
-          bannerImage="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=1200&h=400&fit=crop"
+          bannerImage="https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?w=1200&h=400&fit=crop"
           products={services}
         />
       </div>
