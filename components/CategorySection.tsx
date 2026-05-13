@@ -1,5 +1,6 @@
 'use client';
 
+import { useState } from 'react';
 import ServiceCard from './ServiceCard';
 
 interface CategorySectionProps {
@@ -17,22 +18,29 @@ export default function CategorySection({
   bannerImage, 
   products 
 }: CategorySectionProps) {
-  // Get products for this category
-  const categoryProducts = products.filter(
-    p => (p.fields.Category || 'Other') === category
-  ).slice(0, 10); // Show max 10 products per category
+  const [expanded, setExpanded] = useState(false);
 
-  if (categoryProducts.length === 0) return null;
+  // Get products for this category
+  const allCategoryProducts = products.filter(
+    p => (p.fields.Category || 'Other') === category
+  );
+
+  // Show max 10 initially, or all if expanded
+  const displayedProducts = expanded ? allCategoryProducts : allCategoryProducts.slice(0, 10);
+
+  if (allCategoryProducts.length === 0) return null;
 
   return (
     <section className="mb-12">
       {/* Category Header Banner */}
-      <div className="relative rounded-3xl overflow-hidden mb-8 h-48 md:h-64">
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{
-            backgroundImage: `url('${bannerImage}')`,
-            backgroundPosition: 'center',
+      <div className="relative rounded-3xl overflow-hidden mb-8 h-48 md:h-64 bg-gradient-to-br from-purple-600 to-pink-600">
+        <img
+          src={bannerImage}
+          alt={categoryName}
+          className="absolute inset-0 w-full h-full object-cover"
+          onError={(e) => {
+            // Fallback to gradient if image fails to load
+            e.currentTarget.style.display = 'none';
           }}
         />
         {/* Dark overlay */}
@@ -45,24 +53,29 @@ export default function CategorySection({
             <h2 className="text-3xl md:text-4xl font-bold text-white">{categoryName}</h2>
           </div>
           <p className="text-white/90 mt-2 text-sm md:text-base">
-            {categoryProducts.length} products available
+            {allCategoryProducts.length} products available
           </p>
         </div>
       </div>
 
       {/* Products Grid - 2 columns on mobile, 3-4 on desktop */}
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4 lg:gap-6">
-        {categoryProducts.map((product) => (
+        {displayedProducts.map((product) => (
           <ServiceCard key={product.id} service={product} />
         ))}
       </div>
 
       {/* View More Button */}
-      <div className="mt-6 text-center">
-        <button className="px-8 py-3 border-2 border-purple-600 text-purple-600 rounded-lg font-bold hover:bg-purple-50 transition-all duration-300">
-          View More {categoryName}
-        </button>
-      </div>
+      {allCategoryProducts.length > 10 && (
+        <div className="mt-6 text-center">
+          <button 
+            onClick={() => setExpanded(!expanded)}
+            className="px-8 py-3 border-2 border-purple-600 text-purple-600 rounded-lg font-bold hover:bg-purple-50 transition-all duration-300 hover:scale-105"
+          >
+            {expanded ? `Show Less ${categoryName}` : `View More ${categoryName}`}
+          </button>
+        </div>
+      )}
     </section>
   );
 }
