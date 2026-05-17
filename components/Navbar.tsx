@@ -19,9 +19,16 @@ const HelpWidget = dynamic(() => import('./HelpWidget'), {
   loading: () => <div className="w-6 h-6" /> // Placeholder while loading
 });
 
+// Dynamically import CategoriesModal to avoid hydration issues
+const CategoriesModal = dynamic(() => import('./CategoriesModal'), {
+  ssr: false,
+  loading: () => <div className="w-6 h-6" /> // Placeholder while loading
+});
+
 export default function Navbar() {
   const [user, setUser] = useState<any>(null);
   const [showCategories, setShowCategories] = useState(false);
+  const [isCategoriesModalOpen, setIsCategoriesModalOpen] = useState(false);
   const query = useSearchStore((state) => state.query);
   const setQuery = useSearchStore((state) => state.setQuery);
 
@@ -81,24 +88,14 @@ export default function Navbar() {
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-purple-600 to-pink-600 group-hover:w-full transition-all duration-300"></span>
             </Link>
 
-            {/* Categories Dropdown */}
-            <div className="relative group">
-              <button className="text-gray-700 hover:text-purple-600 font-semibold transition-colors duration-200 flex items-center gap-1">
-                Categories
-                <ChevronDown className="w-4 h-4" />
-              </button>
-              <div className="absolute left-0 mt-0 w-56 bg-white rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
-                {categories.map((cat) => (
-                  <Link
-                    key={cat.name}
-                    href={cat.href}
-                    className="block px-4 py-3 text-gray-700 hover:bg-purple-50 hover:text-purple-600 font-medium first:rounded-t-lg last:rounded-b-lg transition-colors"
-                  >
-                    {cat.name}
-                  </Link>
-                ))}
-              </div>
-            </div>
+            {/* Categories Button */}
+            <button
+              onClick={() => setIsCategoriesModalOpen(true)}
+              className="text-gray-700 hover:text-purple-600 font-semibold transition-colors duration-200 flex items-center gap-1 group"
+            >
+              Categories
+              <ChevronDown className="w-4 h-4 group-hover:rotate-180 transition-transform duration-300" />
+            </button>
 
             <Link
               href="/seller-onboarding"
@@ -117,7 +114,7 @@ export default function Navbar() {
                 value={query}
                 onChange={handleSearchChange}
                 placeholder="Search products"
-                className="pl-9 pr-3 py-2 border border-gray-200 rounded-full w-64 focus:outline-none focus:ring-2 focus:ring-purple-500" 
+                className="pl-9 pr-3 py-2 border border-gray-200 rounded-full w-64 focus:outline-none focus:ring-2 focus:ring-purple-500"
               />
             </div>
             <HelpWidget />
@@ -150,6 +147,12 @@ export default function Navbar() {
           </div>
         </div>
       </div>
+
+      {/* Categories Modal */}
+      <CategoriesModal 
+        isOpen={isCategoriesModalOpen} 
+        onClose={() => setIsCategoriesModalOpen(false)} 
+      />
     </nav>
   );
 }
