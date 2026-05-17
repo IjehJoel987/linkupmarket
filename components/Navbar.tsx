@@ -3,7 +3,7 @@
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { LogOut, Search, ChevronDown } from 'lucide-react';
+import { LogOut, Search } from 'lucide-react';
 import dynamic from 'next/dynamic';
 import { useSearchStore } from '@/lib/search-store';
 
@@ -19,25 +19,10 @@ const HelpWidget = dynamic(() => import('./HelpWidget'), {
   loading: () => <div className="w-6 h-6" /> // Placeholder while loading
 });
 
-// Dynamically import CategoriesModal to avoid hydration issues
-const CategoriesModal = dynamic(() => import('./CategoriesModal'), {
-  ssr: false,
-  loading: () => <div className="w-6 h-6" /> // Placeholder while loading
-});
-
 export default function Navbar() {
   const [user, setUser] = useState<any>(null);
-  const [showCategories, setShowCategories] = useState(false);
-  const [isCategoriesModalOpen, setIsCategoriesModalOpen] = useState(false);
   const query = useSearchStore((state) => state.query);
   const setQuery = useSearchStore((state) => state.setQuery);
-
-  const categories = [
-    { name: 'LinkUp Foods', href: '#marketplace' },
-    { name: 'LinkUp Gadgets', href: '#marketplace' },
-    { name: 'LinkUp Fashion', href: '#marketplace' },
-    { name: 'Trade Fair Specials', href: '#marketplace' }
-  ];
 
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
@@ -87,15 +72,6 @@ export default function Navbar() {
               Browse Services
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-purple-600 to-pink-600 group-hover:w-full transition-all duration-300"></span>
             </Link>
-
-            {/* Categories Button */}
-            <button
-              onClick={() => setIsCategoriesModalOpen(true)}
-              className="text-gray-700 hover:text-purple-600 font-semibold transition-colors duration-200 flex items-center gap-1 group"
-            >
-              Categories
-              <ChevronDown className="w-4 h-4 group-hover:rotate-180 transition-transform duration-300" />
-            </button>
 
             <Link
               href="/seller-onboarding"
@@ -147,12 +123,6 @@ export default function Navbar() {
           </div>
         </div>
       </div>
-
-      {/* Categories Modal */}
-      <CategoriesModal 
-        isOpen={isCategoriesModalOpen} 
-        onClose={() => setIsCategoriesModalOpen(false)} 
-      />
     </nav>
   );
 }
