@@ -19,6 +19,15 @@ export default function CategoryPageClient({
   const [priceRange, setPriceRange] = useState('Any Price');
   const [sortBy, setSortBy] = useState('Most Popular');
 
+  // Debug logging
+  console.log('=== CategoryPageClient Debug ===');
+  console.log('Category param:', category);
+  console.log('Total products received:', products.length);
+  console.log('First product:', products[0]?.fields);
+  if (products.length > 0) {
+    console.log('First product Category field:', products[0]?.fields?.Category);
+  }
+
   // Filter and sort products
   const filteredProducts = useMemo(() => {
     let filtered = products.filter((service: any) => {
@@ -50,6 +59,9 @@ export default function CategoryPageClient({
 
       return matchesCategory && matchesSearch && matchesPrice;
     });
+
+    console.log('Filtered products count:', filtered.length);
+    console.log('=== End Debug ===');
 
     // Sort products
     filtered.sort((a, b) => {
