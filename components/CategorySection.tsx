@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import ServiceCard from './ServiceCard';
+import { useSearchStore } from '@/lib/search-store';
 
 interface CategorySectionProps {
   category: string;
@@ -19,11 +20,29 @@ export default function CategorySection({
   products 
 }: CategorySectionProps) {
   const [expanded, setExpanded] = useState(false);
+  const searchQuery = useSearchStore((state) => state.query);
 
-  // Get products for this category
-  const allCategoryProducts = products.filter(
-    p => (p.fields.Category || 'Other') === category
-  );
+  // Get products for this category AND matching search
+  const allCategoryProducts = products.filter(p => {
+    // Category filter
+    const productCategory = p.fields.Category || 'Other';
+    const matchesCategory = productCategory === category;
+    
+    // Search filter
+    if (!matchesCategory) return false;
+    
+    if (searchQuery === '') return true;
+    
+    const title = p.fields.Title?.toLowerCase() || '';
+    const description = p.fields.Description?.toLowerCase() || '';
+    const name = p.fields.Vendor_Name?.toLowerCase() || '';
+    
+    return (
+      title.includes(searchQuery.toLowerCase()) ||
+      description.includes(searchQuery.toLowerCase()) ||
+      name.includes(searchQuery.toLowerCase())
+    );
+  });
 
   // Show max 10 initially, or all if expanded
   const displayedProducts = expanded ? allCategoryProducts : allCategoryProducts.slice(0, 10);
