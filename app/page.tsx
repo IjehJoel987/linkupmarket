@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { fetchServices } from '@/lib/airtable';
 import MarketplaceContent from '../components/MarketplaceContent';
 import CategorySection from '../components/CategorySection';
+import CategoryBar from '../components/CategoryBar';
 import Navbar from '../components/Navbar';
 import AnnouncementBanner from '../components/AnnouncementBanner';
 
@@ -13,6 +14,7 @@ export default async function HomePage() {
     <div className="min-h-screen bg-gray-50">
       <Navbar />
       <AnnouncementBanner />
+      <CategoryBar />
 
       {/* Hero Section */}
       <div className="relative overflow-hidden min-h-screen flex items-center justify-center bg-black">
