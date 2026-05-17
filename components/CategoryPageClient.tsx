@@ -28,6 +28,10 @@ export default function CategoryPageClient({
       const name = fields.Vendor_Name?.toLowerCase() || '';
       const price = fields.Price || 0;
 
+      // Category filter
+      const productCategory = fields.Category || 'Other';
+      const matchesCategory = productCategory === category;
+
       // Search filter
       const matchesSearch = searchQuery === '' ||
         title.includes(searchQuery.toLowerCase()) ||
@@ -44,7 +48,7 @@ export default function CategoryPageClient({
         matchesPrice = price > 10000;
       }
 
-      return matchesSearch && matchesPrice;
+      return matchesCategory && matchesSearch && matchesPrice;
     });
 
     // Sort products
