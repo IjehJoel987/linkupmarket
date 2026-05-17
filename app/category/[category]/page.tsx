@@ -15,10 +15,10 @@ export default async function CategoryPage({ params }: { params: { category: str
   const category = params.category;
   const info = categoryInfo[category] || { name: 'Products', emoji: '📦', color: 'from-gray-400 to-gray-600' };
 
-  // Filter services for this category
-  const categoryProducts = services.filter(
+  // Count products for this category (for display)
+  const categoryCount = services.filter(
     (service: any) => (service.fields.Category || 'Other') === category
-  );
+  ).length;
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -31,7 +31,7 @@ export default async function CategoryPage({ params }: { params: { category: str
             <span className="text-5xl md:text-6xl">{info.emoji}</span>
             <div>
               <h1 className="text-4xl md:text-5xl font-bold text-white">{info.name}</h1>
-              <p className="text-white/90 text-lg">{categoryProducts.length} products available</p>
+              <p className="text-white/90 text-lg">{categoryCount} products available</p>
             </div>
           </div>
         </div>
@@ -41,7 +41,7 @@ export default async function CategoryPage({ params }: { params: { category: str
       <CategoryPageClient 
         category={category}
         categoryName={info.name}
-        products={categoryProducts}
+        products={services}
       />
 
       {/* Footer */}
