@@ -4,28 +4,10 @@ import { fetchServices } from '@/lib/airtable';
 import Navbar from '../components/Navbar';
 import AnnouncementBanner from '../components/AnnouncementBanner';
 import CategoryBar from '../components/CategoryBar';
-import ShopByCategory from '../components/ShopByCategory';
-import PromotionalCards from '../components/PromotionalCards';
-import CountdownTimer from '../components/CountdownTimer';
 import CategorySection from '../components/CategorySection';
 
 export default async function HomePage() {
   const services = await fetchServices();
-
-  // Count products per category
-  const categoryCounts = {
-    linkupfood: services.filter((s: any) => s.fields.Category === 'linkupfood').length,
-    linkupgadget: services.filter((s: any) => s.fields.Category === 'linkupgadget').length,
-    linkupfashion: services.filter((s: any) => s.fields.Category === 'linkupfashion').length,
-    tradefairspecial: services.filter((s: any) => s.fields.Category === 'tradefairspecial').length
-  };
-
-  const categoryStats = [
-    { category: 'linkupfood', name: 'LinkUp Foods', emoji: '🍞', count: categoryCounts.linkupfood, color: 'from-orange-400 to-amber-500' },
-    { category: 'linkupgadget', name: 'LinkUp Gadgets', emoji: '⚡', count: categoryCounts.linkupgadget, color: 'from-blue-400 to-blue-600' },
-    { category: 'linkupfashion', name: 'LinkUp Fashion', emoji: '👕', count: categoryCounts.linkupfashion, color: 'from-pink-400 to-rose-600' },
-    { category: 'tradefairspecial', name: 'Trade Fair Specials', emoji: '🛍️', count: categoryCounts.tradefairspecial, color: 'from-purple-400 to-indigo-600' }
-  ];
 
   return (
     <div className="min-h-screen bg-white">
@@ -33,58 +15,102 @@ export default async function HomePage() {
       <AnnouncementBanner />
       <CategoryBar />
 
-      {/* Benefits Section */}
-      <div className="bg-gray-50 py-8 md:py-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
-            <div className="flex items-start gap-3">
-              <div className="p-3 bg-purple-100 rounded-full">
-                <span className="text-2xl">🚚</span>
+      {/* Promotional Hero Section */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          {/* Left: Trade Fair Promo */}
+          <div className="lg:col-span-2 relative rounded-3xl overflow-hidden h-96">
+            <img 
+              src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=800&h=400&fit=crop&q=80" 
+              alt="Trade Fair" 
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-black/40"></div>
+            <div className="absolute inset-0 flex flex-col justify-start p-6 text-white">
+              <div className="inline-flex items-center bg-red-500 text-white px-3 py-1 rounded-full font-bold text-sm w-fit mb-4">
+                EXCLUSIVE EVENT
               </div>
-              <div>
-                <h4 className="font-bold text-gray-900">Hall Delivery</h4>
-                <p className="text-sm text-gray-600">Under 30 minutes</p>
-              </div>
+              <h2 className="text-5xl font-bold mb-3">LinkUp<br />Trade Fair</h2>
+              <p className="text-white/90 text-base mb-6 max-w-sm">The hottest campus deals from fellow student entrepreneurs. Support local, shop smart, save big.</p>
+              <button className="inline-flex items-center gap-2 bg-white text-black px-6 py-3 rounded-full font-bold hover:bg-gray-100 transition w-fit">
+                Shop the Fair
+                <span>›</span>
+              </button>
             </div>
-            <div className="flex items-start gap-3">
-              <div className="p-3 bg-blue-100 rounded-full">
-                <span className="text-2xl">✅</span>
-              </div>
+          </div>
+
+          {/* Right: Promotional Cards */}
+          <div className="flex flex-col gap-6">
+            {/* Hungry Card */}
+            <div className="bg-gradient-to-br from-purple-600 to-purple-700 rounded-3xl p-6 text-white h-44 flex flex-col justify-between relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-purple-500/20 rounded-full blur-3xl"></div>
               <div>
-                <h4 className="font-bold text-gray-900">Verified Vendors</h4>
-                <p className="text-sm text-gray-600">Student-owned</p>
+                <h3 className="text-3xl font-bold mb-2">Hungry?</h3>
+                <p className="text-white/90 text-sm">Fastest delivery to Hebron & CST halls.</p>
               </div>
+              <button className="inline-flex items-center gap-2 bg-purple-500 text-white px-4 py-2 rounded-full font-bold hover:bg-purple-600 transition w-fit border border-white/30">
+                Order Now
+              </button>
             </div>
-            <div className="flex items-start gap-3">
-              <div className="p-3 bg-pink-100 rounded-full">
-                <span className="text-2xl">💳</span>
-              </div>
+
+            {/* Tech Deals Card */}
+            <div className="bg-gradient-to-br from-orange-500 to-red-600 rounded-3xl p-6 text-white h-44 flex flex-col justify-between relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-red-500/20 rounded-full blur-3xl"></div>
               <div>
-                <h4 className="font-bold text-gray-900">Pay on Delivery</h4>
-                <p className="text-sm text-gray-600">Cash or transfer</p>
+                <h3 className="text-3xl font-bold mb-2">Tech Deals</h3>
+                <p className="text-white/90 text-sm">Chargers, buds & dorm essentials.</p>
               </div>
-            </div>
-            <div className="flex items-start gap-3">
-              <div className="p-3 bg-yellow-100 rounded-full">
-                <span className="text-2xl">⚡</span>
-              </div>
-              <div>
-                <h4 className="font-bold text-gray-900">Flash Deals Daily</h4>
-                <p className="text-sm text-gray-600">Up to 40% off</p>
-              </div>
+              <button className="inline-flex items-center gap-2 bg-orange-600 text-white px-4 py-2 rounded-full font-bold hover:bg-orange-700 transition w-fit border border-white/30">
+                View Gear
+              </button>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Shop by Category Section */}
-      <ShopByCategory categories={categoryStats} />
-
-      {/* Promotional Cards */}
-      <PromotionalCards />
-
-      {/* Countdown Timer - Flash Sale */}
-      <CountdownTimer />
+      {/* Benefits Section */}
+      <div className="bg-gray-50 py-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="flex items-center gap-4">
+              <div className="p-3 bg-purple-100 rounded-full flex-shrink-0">
+                <span className="text-2xl">📦</span>
+              </div>
+              <div>
+                <h4 className="font-bold text-gray-900 text-sm">Hall Delivery</h4>
+                <p className="text-xs text-gray-600">Under 30 minutes</p>
+              </div>
+            </div>
+            <div className="flex items-center gap-4">
+              <div className="p-3 bg-purple-100 rounded-full flex-shrink-0">
+                <span className="text-2xl">🛡️</span>
+              </div>
+              <div>
+                <h4 className="font-bold text-gray-900 text-sm">Verified Vendors</h4>
+                <p className="text-xs text-gray-600">Student-owned</p>
+              </div>
+            </div>
+            <div className="flex items-center gap-4">
+              <div className="p-3 bg-purple-100 rounded-full flex-shrink-0">
+                <span className="text-2xl">💳</span>
+              </div>
+              <div>
+                <h4 className="font-bold text-gray-900 text-sm">Pay on Delivery</h4>
+                <p className="text-xs text-gray-600">Cash or transfer</p>
+              </div>
+            </div>
+            <div className="flex items-center gap-4">
+              <div className="p-3 bg-purple-100 rounded-full flex-shrink-0">
+                <span className="text-2xl">⚡</span>
+              </div>
+              <div>
+                <h4 className="font-bold text-gray-900 text-sm">Flash Deals Daily</h4>
+                <p className="text-xs text-gray-600">Up to 40% off</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
       {/* Categories with Products */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
