@@ -5,7 +5,7 @@ import { Search, Filter, X } from 'lucide-react';
 import ServiceCard from '@/components/ServiceCard';
 
 interface CategoryPageClientProps {
-  category: string;
+  category: string; 
   categoryName: string;
   products: any[];
 }
