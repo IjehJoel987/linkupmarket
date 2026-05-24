@@ -9,6 +9,15 @@ import CategorySection from '../components/CategorySection';
 export default async function HomePage() {
   const services = await fetchServices();
 
+  console.log('📄 HomePage Debug:');
+  console.log('  Total services fetched:', services.length);
+  if (services.length > 0) {
+    console.log('  First service:', services[0]?.fields?.Title);
+    console.log('  First service category:', services[0]?.fields?.Category);
+  }
+  const allCategories = services.map(s => s.fields.Category).filter(Boolean);
+  console.log('  All categories in data:', [...new Set(allCategories)]);
+
   return (
     <div className="min-h-screen bg-white">
       <Navbar />
