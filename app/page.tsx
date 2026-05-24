@@ -21,7 +21,7 @@ export default async function HomePage() {
           {/* Left: Trade Fair Promo */}
           <div className="lg:col-span-2 relative rounded-3xl overflow-hidden h-96">
             <img 
-              src="/trade-fair-banner.jpg" 
+              src="https://images.unsplash.com/photo-1488459716781-6918f33fc205?w=800&h=400&fit=crop&q=80" 
               alt="Trade Fair" 
               className="w-full h-full object-cover"
             />
@@ -32,10 +32,12 @@ export default async function HomePage() {
               </div>
               <h2 className="text-5xl font-bold mb-3">LinkUp<br />Trade Fair</h2>
               <p className="text-white/90 text-base mb-6 max-w-sm">The hottest campus deals from fellow student entrepreneurs. Support local, shop smart, save big.</p>
-              <button className="inline-flex items-center gap-2 bg-white text-black px-6 py-3 rounded-full font-bold hover:bg-gray-100 transition w-fit">
-                Shop the Fair
-                <span>›</span>
-              </button>
+              <Link href="/category/tradefairspecial">
+                <button className="inline-flex items-center gap-2 bg-white text-black px-6 py-3 rounded-full font-bold hover:bg-gray-100 transition w-fit">
+                  Shop the Fair
+                  <span>›</span>
+                </button>
+              </Link>
             </div>
           </div>
 
@@ -48,9 +50,11 @@ export default async function HomePage() {
                 <h3 className="text-3xl font-bold mb-2">Hungry?</h3>
                 <p className="text-white/90 text-sm">Fastest delivery to Hebron & CST halls.</p>
               </div>
-              <button className="inline-flex items-center gap-2 bg-purple-500 text-white px-4 py-2 rounded-full font-bold hover:bg-purple-600 transition w-fit border border-white/30">
-                Order Now
-              </button>
+              <Link href="/category/linkupfood">
+                <button className="inline-flex items-center gap-2 bg-purple-500 text-white px-4 py-2 rounded-full font-bold hover:bg-purple-600 transition w-fit border border-white/30">
+                  Order Now
+                </button>
+              </Link>
             </div>
 
             {/* Tech Deals Card */}
@@ -60,9 +64,11 @@ export default async function HomePage() {
                 <h3 className="text-3xl font-bold mb-2">Tech Deals</h3>
                 <p className="text-white/90 text-sm">Chargers, buds & dorm essentials.</p>
               </div>
-              <button className="inline-flex items-center gap-2 bg-orange-600 text-white px-4 py-2 rounded-full font-bold hover:bg-orange-700 transition w-fit border border-white/30">
-                View Gear
-              </button>
+              <Link href="/category/linkupgadget">
+                <button className="inline-flex items-center gap-2 bg-orange-600 text-white px-4 py-2 rounded-full font-bold hover:bg-orange-700 transition w-fit border border-white/30">
+                  View Gear
+                </button>
+              </Link>
             </div>
           </div>
         </div>
