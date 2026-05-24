@@ -21,7 +21,7 @@ export default async function HomePage() {
           {/* Left: Trade Fair Promo */}
           <div className="lg:col-span-2 relative rounded-3xl overflow-hidden h-96">
             <img 
-              src="https://images.unsplash.com/photo-1488459716781-6918f33fc205?w=800&h=400&fit=crop&q=80" 
+              src="/trade-fair-banner.jpg" 
               alt="Trade Fair" 
               className="w-full h-full object-cover"
             />
