@@ -30,6 +30,9 @@ export default function CategoryPageClient({
 
   // Filter and sort products
   const filteredProducts = useMemo(() => {
+    console.log('🔍 FILTERING DEBUG - Category:', category);
+    console.log('📦 Total products to filter:', products.length);
+    
     let filtered = products.filter((service: any) => {
       const fields = service.fields;
       const title = fields.Title?.toLowerCase() || '';
@@ -40,6 +43,9 @@ export default function CategoryPageClient({
       // Category filter
       const productCategory = fields.Category || 'Other';
       const matchesCategory = productCategory === category;
+      
+      // Debug each product
+      console.log(`Product: "${fields.Title}" | Category: "${productCategory}" | Matches: ${matchesCategory}`);
 
       // Search filter
       const matchesSearch = searchQuery === '' ||
@@ -60,7 +66,7 @@ export default function CategoryPageClient({
       return matchesCategory && matchesSearch && matchesPrice;
     });
 
-    console.log('Filtered products count:', filtered.length);
+    console.log('✅ Filtered products count:', filtered.length);
     console.log('=== End Debug ===');
 
     // Sort products
