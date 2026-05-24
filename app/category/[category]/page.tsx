@@ -10,9 +10,10 @@ const categoryInfo: Record<string, { name: string; emoji: string; color: string 
   tradefairspecial: { name: 'Trade Fair Specials', emoji: '🛍️', color: 'from-purple-400 to-indigo-600' }
 };
 
-export default async function CategoryPage({ params }: { params: { category: string } }) {
+export default async function CategoryPage({ params }: { params: Promise<{ category: string }> }) {
+  const resolvedParams = await params;
   const services = await fetchServices();
-  const category = params.category;
+  const category = resolvedParams.category;
   const info = categoryInfo[category] || { name: 'Products', emoji: '📦', color: 'from-gray-400 to-gray-600' };
 
   // Count products for this category (for display)
