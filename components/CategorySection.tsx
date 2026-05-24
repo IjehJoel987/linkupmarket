@@ -22,13 +22,6 @@ export default function CategorySection({
   const [expanded, setExpanded] = useState(false);
   const searchQuery = useSearchStore((state) => state.query);
 
-  console.log(`🔍 CategorySection: ${categoryName}`);
-  console.log(`  Total products received: ${products.length}`);
-  console.log(`  Looking for category: ${category}`);
-  if (products.length > 0) {
-    console.log(`  First product: ${products[0]?.fields?.Title}, Category: ${products[0]?.fields?.Category}`);
-  }
-
   // Get products for this category AND matching search
   const allCategoryProducts = products.filter(p => {
     // Category filter
@@ -50,8 +43,6 @@ export default function CategorySection({
       name.includes(searchQuery.toLowerCase())
     );
   });
-
-  console.log(`  ✅ Filtered products for ${categoryName}: ${allCategoryProducts.length}`);
 
   // Show max 10 initially, or all if expanded
   const displayedProducts = expanded ? allCategoryProducts : allCategoryProducts.slice(0, 10);
