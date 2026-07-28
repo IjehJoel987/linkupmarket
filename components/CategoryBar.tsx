@@ -20,7 +20,7 @@ export default function CategoryBar() {
       name: 'LinkUp Fashion',
       emoji: '👕',
       id: 'linkupfashion',
-      color: 'from-pink-400 to-rose-600'
+      color: 'from-pink-400 to-rose-600'}
   ];
 
   return (
