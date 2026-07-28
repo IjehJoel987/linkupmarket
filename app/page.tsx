@@ -19,35 +19,9 @@ export default async function HomePage() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
 
-          {/* Right: Promotional Cards */}
-          <div className="flex flex-col gap-6">
-            {/* Hungry Card */}
-            <div className="bg-gradient-to-br from-purple-600 to-purple-700 rounded-3xl p-6 text-white h-44 flex flex-col justify-between relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-32 h-32 bg-purple-500/20 rounded-full blur-3xl"></div>
-              <div>
-                <h3 className="text-3xl font-bold mb-2">Hungry?</h3>
-                <p className="text-white/90 text-sm">Fastest delivery to Hebron & CST halls.</p>
-              </div>
-              <Link href="/category/linkupfood">
-                <button className="inline-flex items-center gap-2 bg-purple-500 text-white px-4 py-2 rounded-full font-bold hover:bg-purple-600 transition w-fit border border-white/30">
-                  Order Now
-                </button>
-              </Link>
-            </div>
+          
 
-            {/* Tech Deals Card */}
-            <div className="bg-gradient-to-br from-orange-500 to-red-600 rounded-3xl p-6 text-white h-44 flex flex-col justify-between relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-32 h-32 bg-red-500/20 rounded-full blur-3xl"></div>
-              <div>
-                <h3 className="text-3xl font-bold mb-2">Tech Deals</h3>
-                <p className="text-white/90 text-sm">Chargers, buds & dorm essentials.</p>
-              </div>
-              <Link href="/category/linkupgadget">
-                <button className="inline-flex items-center gap-2 bg-orange-600 text-white px-4 py-2 rounded-full font-bold hover:bg-orange-700 transition w-fit border border-white/30">
-                  View Gear
-                </button>
-              </Link>
-            </div>
+
           </div>
         </div>
       </div>
