@@ -22,12 +22,7 @@ export default function CategoryBar() {
       id: 'linkupfashion',
       color: 'from-pink-400 to-rose-600'
     },
-    {
-      name: 'Trade Fair Specials',
-      emoji: '🛍️',
-      id: 'tradefairspecial',
-      color: 'from-purple-400 to-indigo-600'
-    }
+
   ];
 
   return (
