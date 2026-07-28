@@ -15,32 +15,7 @@ export default async function HomePage() {
       <AnnouncementBanner />
       <CategoryBar />
 
-      {/* Promotional Hero Section */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          {/* Left: Trade Fair Promo */}
-          <div className="lg:col-span-2 relative rounded-3xl overflow-hidden h-96">
-            <img 
-              src="/trade-fair-banner.jpg" 
-              alt="Trade Fair" 
-              className="w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-black/40"></div>
-            <div className="absolute inset-0 flex flex-col justify-start p-6 text-white">
-              <div className="inline-flex items-center bg-red-500 text-white px-3 py-1 rounded-full font-bold text-sm w-fit mb-4">
-                EXCLUSIVE EVENT
-              </div>
-              <h2 className="text-5xl font-bold mb-3">LinkUp<br />Trade Fair</h2>
-              <p className="text-white/90 text-base mb-6 max-w-sm">The hottest campus deals from fellow student entrepreneurs. Support local, shop smart, save big.</p>
-              <Link href="/category/tradefairspecial">
-                <button className="inline-flex items-center gap-2 bg-white text-black px-6 py-3 rounded-full font-bold hover:bg-gray-100 transition w-fit">
-                  Shop the Fair
-                  <span>›</span>
-                </button>
-              </Link>
-            </div>
-          </div>
-
+      
           {/* Right: Promotional Cards */}
           <div className="flex flex-col gap-6">
             {/* Hungry Card */}
